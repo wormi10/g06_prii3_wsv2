@@ -18,6 +18,50 @@
         <falloff>0</falloff>
       </spot>
     </light>
+    <model name='overhead_camera'>
+      <static>1</static>
+      <pose>0.75 0 1.5 0 1.87 0</pose>
+      <link name='camera_link'>
+        <sensor name='camera_sensor' type='camera'>
+          <always_on>1</always_on>
+          <update_rate>20</update_rate>
+          <camera>
+            <horizontal_fov>0.875</horizontal_fov>
+            <image>
+              <width>640</width>
+              <height>480</height>
+              <format>R8G8B8</format>
+            </image>
+            <clip>
+              <near>0.1</near>
+              <far>100</far>
+            </clip>
+          </camera>
+          <visualize>1</visualize>
+          <topic>/overhead_camera/image_raw</topic>
+          <!-- Plugin para ROS2 -->
+          <plugin name="gazebo_ros_camera" filename="libgazebo_ros_camera.so">
+            <always_on>true</always_on>
+            <update_rate>30</update_rate>
+            <camera_name>overhead_camera</camera_name>
+            <image_topic_name>image_raw</image_topic_name>
+            <camera_info_topic_name>camera_info</camera_info_topic_name>
+            <frame_name>overhead_camera_link</frame_name>
+          </plugin>
+        </sensor>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <plugin name='gazebo_ros_camera' filename='libgazebo_ros_camera.so'>
+      <always_on>1</always_on>
+      <update_rate>30</update_rate>
+      <camera_name>overhead_camera</camera_name>
+      <image_topic_name>image_raw</image_topic_name>
+      <camera_info_topic_name>camera_info</camera_info_topic_name>
+      <frame_name>overhead_camera_link</frame_name>
+    </plugin>
     <model name='ground_plane'>
       <static>1</static>
       <link name='link'>
