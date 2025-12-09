@@ -1,0 +1,17 @@
+# ROS / colcon build artifacts
+build/
+install/
+log/
+
+# Python
+*.pyc
+__pycache__/
+*.egg-info/
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+
+# other
+*.env
