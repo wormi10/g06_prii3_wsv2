@@ -20,7 +20,7 @@
     </light>
     <model name='overhead_camera'>
       <static>1</static>
-      <pose>0.75 0 1.5 3.14159 1.27159 3.14159</pose>
+      <pose>0 0 3 0 1.57 1.57</pose>
       <link name='camera_link'>
         <sensor name='camera_sensor' type='camera'>
           <always_on>1</always_on>
@@ -286,23 +286,7 @@
       </link>
       <pose>-0.07777 -0.280673 0 0 -0 0</pose>
     </model>
-    <model name='Marker3'>
-      <static>1</static>
-      <link name='link'>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <uri>model://marker3/meshes/Marker3.dae</uri>
-              <scale>0.4 0.4 0.4</scale>
-            </mesh>
-          </geometry>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-      <pose>-0.046394 -0.618429 0 0 -0 0</pose>
-    </model>
+    
     <state world_name='default'>
       <sim_time>1854 277000000</sim_time>
       <real_time>209 264357548</real_time>
@@ -328,16 +312,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='Marker3'>
-        <pose>0.140762 -0.054741 0.204855 3.14159 -1.5397 3.14159</pose>
-        <scale>1 1 1</scale>
-        <link name='link'>
-          <pose>0.140762 -0.054741 0.204855 3.14159 -1.5397 3.14159</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
+      
       <model name='eurobot_cositas'>
         <pose>-0.219803 1.48774 0 0 -0 1.56945</pose>
         <scale>1 1 1</scale>
@@ -377,10 +352,10 @@
         </link>
       </model>
       <model name='overhead_camera'>
-        <pose>0.75 0 1.5 3.14159 1.27159 3.14159</pose>
+        <pose>0 0 3 0 1.57 1.57</pose>
         <scale>1 1 1</scale>
         <link name='camera_link'>
-          <pose>0.75 0 1.5 3.14159 1.27159 3.14159</pose>
+          <pose>0 0 3 0 1.57 1.57</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
@@ -658,6 +633,17 @@
             </mesh>
           </geometry>
         </visual>
+        <visual name='ArUco robot'>
+          <pose>-0.17 0 0.13 0 1.57 0</pose>
+          <geometry>
+            
+              <mesh>
+              <uri>model://marker3/meshes/Marker3.dae</uri>
+              <scale>0.4 0.4 0.4</scale>
+            </mesh>
+            
+          </geometry>
+       </visual>
         <sensor name='hls_lfcd_lds' type='ray'>
           <always_on>1</always_on>
           <visualize>1</visualize>
