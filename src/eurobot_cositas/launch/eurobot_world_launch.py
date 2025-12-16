@@ -6,6 +6,7 @@ from launch import LaunchDescription
 from launch.actions import IncludeLaunchDescription, ExecuteProcess
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration
+from launch_ros.actions import Node
 
 TURTLEBOT3_MODEL = os.environ['TURTLEBOT3_MODEL']
 
@@ -33,6 +34,22 @@ def generate_launch_description():
         'model.sdf'
     )
 
+    # Nodo detector de ArUco
+    aruco_detector_node = Node(
+        package='eurobot_cositas',
+        executable='aruco_detector_cositas.py',
+        name='aruco_detector',
+        output='screen',
+        parameters=[{
+            'camera_topic': '/overhead_camera/image_raw',
+            'camera_info_topic': '/overhead_camera/camera_info',
+            'camera_frame': 'overhead_camera_link',
+            'aruco_dict': 'DICT_4X4_50',
+            'marker_size': 0.1,
+            'use_sim_time': use_sim_time,
+        }]
+    )
+
     return LaunchDescription([
         # Servidor de Gazebo con el mundo
         IncludeLaunchDescription(
@@ -56,4 +73,7 @@ def generate_launch_description():
             ),
             launch_arguments={'use_sim_time': use_sim_time}.items(),
         ),
+
+        # Nodo detector de ArUco
+        aruco_detector_node,
     ])

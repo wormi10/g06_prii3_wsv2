@@ -303,10 +303,10 @@
         </link>
       </model>
       <model name='Marker2'>
-        <pose>-0.943297 -1.28686 0.045419 3.14159 -1.55803 3.14159</pose>
+        <pose>-1.03297 -1.25086 0.045419 3.14159 -1.55803 3.14159</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose>-0.943297 -1.28686 0.045419 3.14159 -1.55803 3.14159</pose>
+          <pose>-1.03297 -1.25086 0.045419 3.14159 -1.55803 3.14159</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>

@@ -29,6 +29,8 @@ setup(
     description='Waypoint navigation TB3',
     license='Apache License 2.0',
     entry_points={
-        'console_scripts': [],
+        'console_scripts': [
+            'aruco_detector_cositas.py = eurobot_cositas.aruco_detector_cositas:main',
+        ],
     },
 )
