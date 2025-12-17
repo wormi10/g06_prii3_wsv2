@@ -14,40 +14,43 @@ class ArucoDetectorNode(Node):
     def __init__(self):
         super().__init__('aruco_detector_node')
         
-        # Declarar parámetros
+        # Declarar parametros
         self.declare_parameter('camera_topic', '/overhead_camera/image_raw')
         self.declare_parameter('camera_info_topic', '/overhead_camera/camera_info')
         self.declare_parameter('camera_frame', 'overhead_camera_link')
         self.declare_parameter('aruco_dict', 'DICT_4X4_50')
         self.declare_parameter('marker_size', 0.1)
         
-        # Obtener parámetros
+        # Obtener parametros
         self.camera_topic = self.get_parameter('camera_topic').value
         self.camera_info_topic = self.get_parameter('camera_info_topic').value
         self.camera_frame = self.get_parameter('camera_frame').value
         self.aruco_dict_type = self.get_parameter('aruco_dict').value
         self.marker_size = self.get_parameter('marker_size').value
         
-        # Variables para parámetros de cámara
+        # Variables para parametros de camara
         self.camera_matrix = None
         self.dist_coeffs = None
         self.camera_info_received = False
         
+        # Diccionario para almacenar las ultimas posiciones detectadas
+        self.detected_markers = {}
+        
         # Inicializar CvBridge
         self.bridge = CvBridge()
         
-        # Detectar versión de OpenCV y configurar ArUco
+        # Detectar version de OpenCV y configurar ArUco
         opencv_version = cv2.__version__.split('.')
         self.opencv_major = int(opencv_version[0])
         self.opencv_minor = int(opencv_version[1])
         
-        self.get_logger().info(f"OpenCV versión detectada: {cv2.__version__}")
+        self.get_logger().info(f"OpenCV version detectada: {cv2.__version__}")
         
         # Obtener diccionario ArUco
         aruco_dict_id = getattr(cv2.aruco, self.aruco_dict_type)
         self.aruco_dict = cv2.aruco.Dictionary_get(aruco_dict_id)
         
-        # Crear parámetros del detector según versión de OpenCV
+        # Crear parametros del detector segun version de OpenCV
         try:
             # Intentar API nueva (OpenCV 4.7+)
             self.aruco_params = cv2.aruco.DetectorParameters()
@@ -83,7 +86,7 @@ class ArucoDetectorNode(Node):
             10
         )
         
-        # Suscriptor a la imagen de la cámara
+        # Suscriptor a la imagen de la camara
         self.image_sub = self.create_subscription(
             Image,
             self.camera_topic,
@@ -91,44 +94,88 @@ class ArucoDetectorNode(Node):
             10
         )
         
+        # Timer para imprimir posiciones cada 5 segundos
+        self.print_timer = self.create_timer(5.0, self.print_positions_callback)
+        
         self.get_logger().info("=" * 60)
         self.get_logger().info("ArUco Detector Node iniciado (ROS2)")
         self.get_logger().info("=" * 60)
-        self.get_logger().info(f"Cámara imagen: {self.camera_topic}")
-        self.get_logger().info(f"Cámara info: {self.camera_info_topic}")
-        self.get_logger().info(f"Frame cámara: {self.camera_frame}")
+        self.get_logger().info(f"Camara imagen: {self.camera_topic}")
+        self.get_logger().info(f"Camara info: {self.camera_info_topic}")
+        self.get_logger().info(f"Frame camara: {self.camera_frame}")
         self.get_logger().info(f"Diccionario ArUco: {self.aruco_dict_type}")
         self.get_logger().info(f"Tamaño marcador: {self.marker_size}m")
-        self.get_logger().info("Esperando parámetros de cámara...")
+        self.get_logger().info("Esperando parametros de camara...")
         self.get_logger().info("=" * 60)
     
     def camera_info_callback(self, msg):
         """
-        Callback para recibir los parámetros intrínsecos de la cámara desde Gazebo
+        Callback para recibir los parametros intrinsecos de la camara desde Gazebo
         """
         if not self.camera_info_received:
-            # Extraer matriz de cámara (K)
+            # Extraer matriz de camara (K)
             self.camera_matrix = np.array(msg.k).reshape(3, 3)
             
-            # Extraer coeficientes de distorsión (D)
+            # Extraer coeficientes de distorsion (D)
             self.dist_coeffs = np.array(msg.d)
             
             self.camera_info_received = True
             
             self.get_logger().info("=" * 60)
-            self.get_logger().info("Parámetros de cámara recibidos desde Gazebo:")
-            self.get_logger().info(f"Matriz de cámara (K):\n{self.camera_matrix}")
-            self.get_logger().info(f"Coeficientes distorsión (D): {self.dist_coeffs}")
-            self.get_logger().info(f"Resolución: {msg.width}x{msg.height}")
+            self.get_logger().info("Parametros de camara recibidos desde Gazebo:")
+            self.get_logger().info(f"Matriz de camara (K):\n{self.camera_matrix}")
+            self.get_logger().info(f"Coeficientes distorsion (D): {self.dist_coeffs}")
+            self.get_logger().info(f"Resolucion: {msg.width}x{msg.height}")
             self.get_logger().info("=" * 60)
             
-            # Destruir suscripción después de recibir la info
+            # Destruir suscripcion despues de recibir la info
             self.destroy_subscription(self.camera_info_sub)
     
-    def image_callback(self, msg):
-        # Esperar a tener los parámetros de la cámara
+    def print_positions_callback(self):
+        """
+        Imprime las posiciones de todos los ArUcos detectados cada 5 segundos
+        """
         if not self.camera_info_received:
-            self.get_logger().warn("Esperando parámetros de cámara...", throttle_duration_sec=5.0)
+            return
+            
+        if not self.detected_markers:
+            self.get_logger().info("No se han detectado marcadores ArUco aun...")
+            return
+        
+        # Ordenar marcadores por ID
+        sorted_markers = sorted(self.detected_markers.items())
+        
+        self.get_logger().info("")
+        self.get_logger().info("=" * 80)
+        self.get_logger().info("POSICIONES DE ARUCOS DETECTADOS")
+        self.get_logger().info("=" * 80)
+        self.get_logger().info(f"Frame de referencia: {self.camera_frame}")
+        self.get_logger().info(f"Total de ArUcos detectados: {len(self.detected_markers)}")
+        self.get_logger().info("-" * 80)
+        
+        for marker_id, (tvec, rvec) in sorted_markers:
+            x, y, z = tvec[0]
+            
+            # Convertir rotacion a angulos de Euler
+            rotation_matrix, _ = cv2.Rodrigues(rvec)
+            rot = R.from_matrix(rotation_matrix)
+            euler = rot.as_euler('xyz', degrees=True)
+            
+            # Destacar si es el ArUco 2 (origen del sistema)
+            if marker_id == 2:
+                self.get_logger().info(f"ArUco {marker_id:2d} (ORIGEN): X={x:+7.3f}m  Y={y:+7.3f}m  Z={z:+7.3f}m  | Yaw={euler[2]:+7.2f}°")
+            elif marker_id == 3:
+                self.get_logger().info(f"ArUco {marker_id:2d} (ROBOT) : X={x:+7.3f}m  Y={y:+7.3f}m  Z={z:+7.3f}m  | Yaw={euler[2]:+7.2f}°")
+            else:
+                self.get_logger().info(f"ArUco {marker_id:2d}         : X={x:+7.3f}m  Y={y:+7.3f}m  Z={z:+7.3f}m  | Yaw={euler[2]:+7.2f}°")
+        
+        self.get_logger().info("=" * 80)
+        self.get_logger().info("")
+    
+    def image_callback(self, msg):
+        # Esperar a tener los parametros de la camara
+        if not self.camera_info_received:
+            self.get_logger().warn("Esperando parametros de camara...", throttle_duration_sec=5.0)
             return
         
         try:
@@ -160,10 +207,13 @@ class ArucoDetectorNode(Node):
             
             # Procesar cada marcador detectado
             for i, marker_id in enumerate(ids.flatten()):
+                # Guardar posicion detectada
+                self.detected_markers[marker_id] = (tvecs[i], rvecs[i])
+                
                 # Publicar TF para este marcador
                 self.publish_tf(marker_id, rvecs[i], tvecs[i], msg.header.stamp)
                 
-                # Dibujar marcador y ejes (para visualización)
+                # Dibujar marcador y ejes (para visualizacion)
                 cv2.aruco.drawDetectedMarkers(cv_image, corners, ids)
                 
                 # Dibujar ejes del marcador (compatible con todas las versiones)
@@ -188,7 +238,7 @@ class ArucoDetectorNode(Node):
                         self.marker_size * 0.5
                     )
                 
-                # Añadir texto con ID y posición
+                # Añadir texto con ID y posicion
                 corner = corners[i][0][0]
                 pos_text = f"ID:{marker_id} ({tvecs[i][0][0]:.2f}, {tvecs[i][0][1]:.2f}, {tvecs[i][0][2]:.2f})"
                 cv2.putText(
@@ -227,9 +277,9 @@ class ArucoDetectorNode(Node):
     
     def publish_tf(self, marker_id, rvec, tvec, timestamp):
         """
-        Publica la transformación TF desde la cámara al marcador ArUco
+        Publica la transformacion TF desde la camara al marcador ArUco
         """
-        # Crear mensaje de transformación
+        # Crear mensaje de transformacion
         t = TransformStamped()
         
         # Header
@@ -237,25 +287,25 @@ class ArucoDetectorNode(Node):
         t.header.frame_id = self.camera_frame
         t.child_frame_id = f"aruco_{marker_id}"
         
-        # Traslación
+        # Traslacion
         t.transform.translation.x = float(tvec[0][0])
         t.transform.translation.y = float(tvec[0][1])
         t.transform.translation.z = float(tvec[0][2])
         
-        # Convertir vector de rotación a matriz de rotación
+        # Convertir vector de rotacion a matriz de rotacion
         rotation_matrix, _ = cv2.Rodrigues(rvec)
         
-        # Convertir matriz de rotación a cuaternión usando scipy
+        # Convertir matriz de rotacion a cuaternion usando scipy
         rot = R.from_matrix(rotation_matrix)
         quaternion = rot.as_quat()  # [x, y, z, w]
         
-        # Asignar cuaternión
+        # Asignar cuaternion
         t.transform.rotation.x = float(quaternion[0])
         t.transform.rotation.y = float(quaternion[1])
         t.transform.rotation.z = float(quaternion[2])
         t.transform.rotation.w = float(quaternion[3])
         
-        # Publicar transformación
+        # Publicar transformacion
         self.tf_broadcaster.sendTransform(t)
 
 def main(args=None):
