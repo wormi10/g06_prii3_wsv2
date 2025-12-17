@@ -3,7 +3,7 @@ import os
 
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
-from launch.actions import IncludeLaunchDescription, ExecuteProcess, TimerAction
+from launch.actions import IncludeLaunchDescription, TimerAction
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
@@ -11,7 +11,9 @@ from launch_ros.actions import Node
 def generate_launch_description():
     use_sim_time = LaunchConfiguration('use_sim_time', default='true')
 
+    # =========================================================================
     # Paths
+    # =========================================================================
     eurobot_pkg = get_package_share_directory('eurobot_cositas')
     turtlebot3_gazebo_pkg = get_package_share_directory('turtlebot3_gazebo')
     pkg_gazebo_ros = get_package_share_directory('gazebo_ros')
@@ -21,117 +23,102 @@ def generate_launch_description():
     launch_file_dir = os.path.join(turtlebot3_gazebo_pkg, 'launch')
 
     # =========================================================================
-    # 1. GAZEBO: Servidor (se inicia primero)
+    # 0. STATIC CAMERA: TF from world -> overhead_camera_link
+    # =========================================================================
+    static_camera_node = Node(
+        package='tf2_ros',
+        executable='static_transform_publisher',
+        name='overhead_camera_static_tf',
+        arguments=['0', '0', '2.5', '0', '0', '0', 'world', 'overhead_camera_link']
+    )
+
+    # =========================================================================
+    # 1. GAZEBO: Server
     # =========================================================================
     gzserver_cmd = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             os.path.join(pkg_gazebo_ros, 'launch', 'gzserver.launch.py')
         ),
-        launch_arguments={'world': world}.items(),     
+        launch_arguments={'world': world}.items(),
     )
 
     # =========================================================================
-    # 2. GAZEBO: Cliente (se inicia 2 segundos después)
+    # 2. GAZEBO: Client
     # =========================================================================
-    gzclient_cmd = TimerAction(
-        period=2.0,
-        actions=[
-            IncludeLaunchDescription(
-                PythonLaunchDescriptionSource(
-                    os.path.join(pkg_gazebo_ros, 'launch', 'gzclient.launch.py')
-                ),
-            )
-        ]
+    gzclient_cmd = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            os.path.join(pkg_gazebo_ros, 'launch', 'gzclient.launch.py')
+        )
     )
 
     # =========================================================================
-    # 3. ROBOT: State Publisher (se inicia 3 segundos después)
-    # IMPORTANTE: Solo si el robot waffle ya tiene un modelo URDF/SDF en Gazebo
+    # 3. Robot State Publisher
     # =========================================================================
-    robot_state_publisher_cmd = TimerAction(
-        period=3.0,
-        actions=[
-            IncludeLaunchDescription(
-                PythonLaunchDescriptionSource(
-                    [launch_file_dir, '/robot_state_publisher.launch.py']
-                ),
-                launch_arguments={'use_sim_time': use_sim_time}.items(),
-            )
-        ]
+    robot_state_publisher_cmd = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            [launch_file_dir, '/robot_state_publisher.launch.py']
+        ),
+        launch_arguments={'use_sim_time': use_sim_time}.items(),
     )
 
     # =========================================================================
-    # 4. ARUCO: Detector (se inicia 5 segundos después)
+    # 4. ArUco Detector
     # =========================================================================
-    aruco_detector_node = TimerAction(
-        period=5.0,
-        actions=[
-            Node(
-                package='eurobot_cositas',
-                executable='aruco_detector_cositas.py',
-                name='aruco_detector',
-                output='screen',
-                parameters=[{
-                    'camera_topic': '/overhead_camera/image_raw',
-                    'camera_info_topic': '/overhead_camera/camera_info',
-                    'camera_frame': 'overhead_camera_link',
-                    'aruco_dict': 'DICT_4X4_50',
-                    'marker_size': 0.1,
-                    'use_sim_time': use_sim_time,
-                }]
-            )
-        ]
+    aruco_detector_node = Node(
+        package='eurobot_cositas',
+        executable='aruco_detector_cositas.py',
+        name='aruco_detector',
+        output='screen',
+        parameters=[{
+            'camera_topic': '/overhead_camera/image_raw',
+            'camera_info_topic': '/overhead_camera/camera_info',
+            'camera_frame': 'overhead_camera_link',
+            'aruco_dict': 'DICT_4X4_50',
+            'marker_size': 0.1,
+            'use_sim_time': use_sim_time,
+        }]
     )
 
     # =========================================================================
-    # 5. NAVEGACION: Vision guided (se inicia 6 segundos después)
+    # 5. Vision-guided navigation
     # =========================================================================
-    vision_navigation_node = TimerAction(
-        period=6.0,
-        actions=[
-            Node(
-                package='eurobot_cositas',
-                executable='vision_navigation.py',
-                name='vision_guided_navigation',
-                output='screen',
-                parameters=[{
-                    'linear_speed': 0.12,
-                    'angular_speed': 0.5,
-                    'distance_tolerance': 0.15,
-                    'angle_tolerance': 0.08,
-                    'wait_time': 5.0,
-                    'start_delay': 10.0,  # Esperar 10 segundos para RViz
-                    'use_sim_time': use_sim_time,
-                }]
-            )
-        ]
+    vision_navigation_node = Node(
+        package='eurobot_cositas',
+        executable='vision_navigation.py',
+        name='vision_guided_navigation',
+        output='screen',
+        parameters=[{
+            'linear_speed': 0.12,
+            'angular_speed': 0.5,
+            'distance_tolerance': 0.15,
+            'angle_tolerance': 0.08,
+            'wait_time': 5.0,
+            'start_delay': 10.0,
+            'use_sim_time': use_sim_time,
+        }]
     )
 
     # =========================================================================
-    # 6. RVIZ2: Visualización (se inicia 8 segundos después)
+    # 6. RViz2
     # =========================================================================
-    rviz_node = TimerAction(
-        period=8.0,
-        actions=[
-            Node(
-                package='rviz2',
-                executable='rviz2',
-                name='rviz2',
-                arguments=['-d', rviz_config],
-                parameters=[{'use_sim_time': use_sim_time}],
-                output='screen'
-            )
-        ]
+    rviz_node = Node(
+        package='rviz2',
+        executable='rviz2',
+        name='rviz2',
+        arguments=['-d', rviz_config],
+        parameters=[{'use_sim_time': use_sim_time}],
+        output='screen'
     )
 
     # =========================================================================
-    # LAUNCH DESCRIPTION
+    # Launch description
     # =========================================================================
     return LaunchDescription([
-        gzserver_cmd,              # t=0s: Gazebo Server (con robot waffle incluido)
-        gzclient_cmd,              # t=2s: Gazebo Client
-        robot_state_publisher_cmd, # t=3s: Robot State Publisher (opcional)
-        aruco_detector_node,       # t=5s: ArUco Detector
-        vision_navigation_node,    # t=6s: Vision Navigation
-        rviz_node,                 # t=8s: RViz2
+        static_camera_node,         # t=0s: static camera TF
+        gzserver_cmd,               # Gazebo server
+        gzclient_cmd,               # Gazebo client
+        robot_state_publisher_cmd,  # Robot state publisher
+        aruco_detector_node,        # ArUco detector
+        vision_navigation_node,     # Vision-guided navigation
+        rviz_node,                  # RViz2
     ])
