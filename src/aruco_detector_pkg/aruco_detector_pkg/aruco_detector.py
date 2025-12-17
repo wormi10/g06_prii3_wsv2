@@ -17,7 +17,11 @@ class ArucoTableDetector(Node):
     def __init__(self):
         super().__init__('aruco_table_detector')
 
-        # Subscribers
+        # ---------------- Parameters ----------------
+        self.ROBOT_MARKER_ID = 3          # ArUco attached to robot
+        self.marker_size = 0.10           # meters (Eurobot markers)
+
+        # ---------------- Subscribers ----------------
         self.image_sub = self.create_subscription(
             Image,
             '/overhead_camera/image_raw',
@@ -32,29 +36,32 @@ class ArucoTableDetector(Node):
             10
         )
 
+        # ---------------- Utils ----------------
         self.bridge = CvBridge()
         self.tf_broadcaster = TransformBroadcaster(self)
 
-        # ArUco (OpenCV 4.7 API)
+        # ---------------- ArUco (OpenCV 4.7) ----------------
         self.aruco_dict = aruco.getPredefinedDictionary(aruco.DICT_4X4_50)
         self.aruco_params = aruco.DetectorParameters()
 
-        # Camera parameters (filled from CameraInfo)
+        # ---------------- Camera calibration ----------------
         self.camera_matrix = None
         self.dist_coeffs = None
 
-        self.marker_size = 0.10  # meters (Eurobot table)
+        self.get_logger().info("ArUco TABLE + ROBOT detector started (PBI 4.2).")
 
-        self.get_logger().info("ArUco TABLE detector started (PBI 4.2).")
-
-    # ---------------- Camera Info ----------------
+    # ======================================================
+    # Camera info
+    # ======================================================
     def camera_info_callback(self, msg):
         if self.camera_matrix is None:
             self.camera_matrix = np.array(msg.k).reshape(3, 3)
             self.dist_coeffs = np.array(msg.d)
             self.get_logger().info("Camera calibration received.")
 
-    # ---------------- Image ----------------
+    # ======================================================
+    # Image callback
+    # ======================================================
     def image_callback(self, msg):
         if self.camera_matrix is None:
             return
@@ -74,7 +81,9 @@ class ArucoTableDetector(Node):
         for i, marker_id in enumerate(ids.flatten()):
             self.process_marker(marker_id, corners[i], msg.header.stamp)
 
-    # ---------------- Marker processing ----------------
+    # ======================================================
+    # Marker pose estimation + TF publishing
+    # ======================================================
     def process_marker(self, marker_id, corners, stamp):
         half = self.marker_size / 2.0
 
@@ -104,10 +113,16 @@ class ArucoTableDetector(Node):
         if np.isnan(quat).any():
             return
 
+        # ---------------- TF ----------------
         t = TransformStamped()
         t.header.stamp = stamp
         t.header.frame_id = 'overhead_camera_link'
-        t.child_frame_id = f'aruco_{marker_id}'
+
+        # Semantic frame for robot
+        if marker_id == self.ROBOT_MARKER_ID:
+            t.child_frame_id = 'aruco_robot'
+        else:
+            t.child_frame_id = f'aruco_{marker_id}'
 
         t.transform.translation.x = float(tvec[0])
         t.transform.translation.y = float(tvec[1])
@@ -120,12 +135,14 @@ class ArucoTableDetector(Node):
 
         self.tf_broadcaster.sendTransform(t)
 
-    # ---------------- Quaternion helper ----------------
+    # ======================================================
+    # Rotation matrix → quaternion
+    # ======================================================
     def rotation_matrix_to_quaternion(self, R):
-        q = np.empty(4)
+        q = np.zeros(4)
         trace = np.trace(R)
 
-        if trace > 0:
+        if trace > 0.0:
             s = 0.5 / np.sqrt(trace + 1.0)
             q[3] = 0.25 / s
             q[0] = (R[2, 1] - R[1, 2]) * s
@@ -135,6 +152,7 @@ class ArucoTableDetector(Node):
             i = np.argmax(np.diag(R))
             j = (i + 1) % 3
             k = (i + 2) % 3
+
             s = np.sqrt(1.0 + R[i, i] - R[j, j] - R[k, k]) * 2
             q[i] = 0.25 * s
             q[3] = (R[k, j] - R[j, k]) / s
