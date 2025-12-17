@@ -3,25 +3,26 @@ import os
 
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
-from launch.actions import IncludeLaunchDescription, TimerAction
+from launch.actions import IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
 
 def generate_launch_description():
     use_sim_time = LaunchConfiguration('use_sim_time', default='true')
-
+    target_marker = LaunchConfiguration('target_marker', default='10')  # <-- ADDED
+    
     # =========================================================================
     # Paths
     # =========================================================================
     eurobot_pkg = get_package_share_directory('eurobot_cositas')
     turtlebot3_gazebo_pkg = get_package_share_directory('turtlebot3_gazebo')
     pkg_gazebo_ros = get_package_share_directory('gazebo_ros')
-
+    
     world = os.path.join(eurobot_pkg, 'world', 'Tablero2.world')
     rviz_config = os.path.join(eurobot_pkg, 'config', 'eurobot_view.rviz')
     launch_file_dir = os.path.join(turtlebot3_gazebo_pkg, 'launch')
-
+    
     # =========================================================================
     # 0. STATIC CAMERA: TF from world -> overhead_camera_link
     # =========================================================================
@@ -31,7 +32,7 @@ def generate_launch_description():
         name='overhead_camera_static_tf',
         arguments=['0', '0', '2.5', '0', '0', '0', 'world', 'overhead_camera_link']
     )
-
+    
     # =========================================================================
     # 1. GAZEBO: Server
     # =========================================================================
@@ -41,7 +42,7 @@ def generate_launch_description():
         ),
         launch_arguments={'world': world}.items(),
     )
-
+    
     # =========================================================================
     # 2. GAZEBO: Client
     # =========================================================================
@@ -50,7 +51,7 @@ def generate_launch_description():
             os.path.join(pkg_gazebo_ros, 'launch', 'gzclient.launch.py')
         )
     )
-
+    
     # =========================================================================
     # 3. Robot State Publisher
     # =========================================================================
@@ -60,7 +61,7 @@ def generate_launch_description():
         ),
         launch_arguments={'use_sim_time': use_sim_time}.items(),
     )
-
+    
     # =========================================================================
     # 4. ArUco Detector
     # =========================================================================
@@ -78,9 +79,9 @@ def generate_launch_description():
             'use_sim_time': use_sim_time,
         }]
     )
-
+    
     # =========================================================================
-    # 5. Vision-guided navigation
+    # 5. Vision-guided navigation (UPDATED)
     # =========================================================================
     vision_navigation_node = Node(
         package='eurobot_cositas',
@@ -88,16 +89,18 @@ def generate_launch_description():
         name='vision_guided_navigation',
         output='screen',
         parameters=[{
+            'target_marker_id': 10,  # Cambiar por el marcador deseado
+            'robot_frame': 'aruco_3',
+            'world_frame': 'aruco_2',
             'linear_speed': 0.12,
-            'angular_speed': 0.5,
-            'distance_tolerance': 0.15,
+            'angular_speed': 0.4,
+            'distance_tolerance': 0.2,
             'angle_tolerance': 0.08,
-            'wait_time': 5.0,
-            'start_delay': 10.0,
+            'max_attempts': 300,
             'use_sim_time': use_sim_time,
         }]
     )
-
+    
     # =========================================================================
     # 6. RViz2
     # =========================================================================
@@ -109,7 +112,7 @@ def generate_launch_description():
         parameters=[{'use_sim_time': use_sim_time}],
         output='screen'
     )
-
+    
     # =========================================================================
     # Launch description
     # =========================================================================
@@ -119,6 +122,6 @@ def generate_launch_description():
         gzclient_cmd,               # Gazebo client
         robot_state_publisher_cmd,  # Robot state publisher
         aruco_detector_node,        # ArUco detector
-        vision_navigation_node,     # Vision-guided navigation
+        vision_navigation_node,     # Vision-guided navigation (UPDATED)
         rviz_node,                  # RViz2
     ])

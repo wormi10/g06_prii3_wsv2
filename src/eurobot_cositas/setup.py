@@ -9,33 +9,42 @@ setup(
     version='0.0.0',
     packages=find_packages(exclude=['test']),
     data_files=[
+        # Required for ROS 2 package indexing
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
-        
+
+        # Package manifest
         ('share/' + package_name, ['package.xml']),
-        
-        # Instalar todos los archivos launch
+
+        # Launch files
         (os.path.join('share', package_name, 'launch'),
             glob('launch/*.py')),
-        
-        # Instalar mundo de Gazebo
+
+        # Gazebo worlds
         (os.path.join('share', package_name, 'world'),
-            glob('world/*')),
-        
-        # Instalar configuracion de RViz
+            glob('world/*.world')),
+
+        # RViz configs
         (os.path.join('share', package_name, 'config'),
             glob('config/*.rviz')),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
-    maintainer='wormi',
-    maintainer_email='wormi@todo.todo',
-    description='Eurobot 2026 navigation with ArUco vision guidance',
+    maintainer='ilias',
+    maintainer_email='ilias@todo.todo',
+    description='Eurobot vision-guided navigation using overhead ArUco markers (PBI 4.3)',
     license='Apache License 2.0',
     entry_points={
         'console_scripts': [
-            'aruco_detector_cositas.py = eurobot_cositas.aruco_detector_cositas:main',
-            'vision_navigation.py = eurobot_cositas.vision_navigation:main',
+            # ArUco detection from overhead camera
+            'aruco_detector = eurobot_cositas.aruco_detector_cositas:main',
+            'interactive_vision_navigation = eurobot_cositas.interactive_vision_navigation:main',
+            # PURE vision-based navigation (NO Nav2)
+            'vision_guided_navigation = eurobot_cositas.vision_guided_navigation:main',
+            'goto_xy = eurobot_cositas.goto_xy:main',
+            'aruco_map_viewer = eurobot_cositas.aruco_map_viewer:main',
+            'board_frame_publisher = eurobot_cositas.board_frame_publisher',
+            'waypoint_navigation = eurobot_cositas.waypoint_navigation:main',
         ],
     },
 )
