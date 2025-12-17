@@ -37,7 +37,6 @@ setup(
     entry_points={
         'console_scripts': [
             # ArUco detection from overhead camera
-            'aruco_detector = eurobot_cositas.aruco_detector_cositas:main',
             'interactive_vision_navigation = eurobot_cositas.interactive_vision_navigation:main',
             # PURE vision-based navigation (NO Nav2)
             'vision_guided_navigation = eurobot_cositas.vision_guided_navigation:main',
@@ -45,6 +44,10 @@ setup(
             'aruco_map_viewer = eurobot_cositas.aruco_map_viewer:main',
             'board_frame_publisher = eurobot_cositas.board_frame_publisher',
             'waypoint_navigation = eurobot_cositas.waypoint_navigation:main',
-        ],
+            'menu = eurobot_cositas.menu:main',
+            'codethatworks = eurobot_cositas.codethatworks:main',
+            'aruco_detector = eurobot_cositas.aruco_detector_node:main',
+            'vision_world_navigator = eurobot_cositas.vision_world_navigation:main',
+        ]
     },
 )
