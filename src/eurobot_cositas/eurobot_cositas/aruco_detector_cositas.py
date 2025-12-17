@@ -18,15 +18,33 @@ class ArucoDetectorNode(Node):
         self.declare_parameter('camera_topic', '/overhead_camera/image_raw')
         self.declare_parameter('camera_info_topic', '/overhead_camera/camera_info')
         self.declare_parameter('camera_frame', 'overhead_camera_link')
+        self.declare_parameter('world_frame', 'world') # Frame de referencia global (suelo)
         self.declare_parameter('aruco_dict', 'DICT_4X4_50')
-        self.declare_parameter('marker_size', 0.1)
+        # Este es el tamaño por defecto/fallback, ya no es el valor principal.
+        self.declare_parameter('marker_size', 0.1) 
+        self.declare_parameter('origin_marker_id', 2) # ID del ArUco que define el origen del 'world' frame
         
         # Obtener parametros
         self.camera_topic = self.get_parameter('camera_topic').value
         self.camera_info_topic = self.get_parameter('camera_info_topic').value
         self.camera_frame = self.get_parameter('camera_frame').value
+        self.world_frame = self.get_parameter('world_frame').value
         self.aruco_dict_type = self.get_parameter('aruco_dict').value
-        self.marker_size = self.get_parameter('marker_size').value
+        self.marker_size_default = self.get_parameter('marker_size').value
+        self.origin_marker_id = self.get_parameter('origin_marker_id').value
+        
+        # === MAPA DE TAMAÑOS DE MARCADORES (ACTUALIZADO) ===
+        # Este mapa asigna el tamaño físico (en metros) a cada ID de ArUco.
+        # Los IDs no listados usarán el self.marker_size_default (0.1m).
+        self.marker_sizes_map = {
+            2: 0.4,   # ORIGEN/GRANDE: 40 cm
+            3: 0.4,   # ROBOT/GRANDE: 40 cm
+            20: 0.2,  # PEQUEÑO: 20 cm
+            21: 0.2,  # PEQUEÑO: 20 cm
+            22: 0.2,  # PEQUEÑO: 20 cm
+            23: 0.2,  # PEQUEÑO: 20 cm
+            24: 0.2,  # PEQUEÑO: 20 cm
+        }
         
         # Variables para parametros de camara
         self.camera_matrix = None
@@ -103,8 +121,8 @@ class ArucoDetectorNode(Node):
         self.get_logger().info(f"Camara imagen: {self.camera_topic}")
         self.get_logger().info(f"Camara info: {self.camera_info_topic}")
         self.get_logger().info(f"Frame camara: {self.camera_frame}")
+        self.get_logger().info(f"Frame mundo: {self.world_frame} (Ancla: ArUco {self.origin_marker_id})")
         self.get_logger().info(f"Diccionario ArUco: {self.aruco_dict_type}")
-        self.get_logger().info(f"Tamaño marcador: {self.marker_size}m")
         self.get_logger().info("Esperando parametros de camara...")
         self.get_logger().info("=" * 60)
     
@@ -147,9 +165,8 @@ class ArucoDetectorNode(Node):
         
         self.get_logger().info("")
         self.get_logger().info("=" * 80)
-        self.get_logger().info("POSICIONES DE ARUCOS DETECTADOS")
+        self.get_logger().info(f"POSICIONES DE ARUCOS DETECTADOS (Frame: {self.camera_frame})")
         self.get_logger().info("=" * 80)
-        self.get_logger().info(f"Frame de referencia: {self.camera_frame}")
         self.get_logger().info(f"Total de ArUcos detectados: {len(self.detected_markers)}")
         self.get_logger().info("-" * 80)
         
@@ -161,15 +178,19 @@ class ArucoDetectorNode(Node):
             rot = R.from_matrix(rotation_matrix)
             euler = rot.as_euler('xyz', degrees=True)
             
-            # Destacar si es el ArUco 2 (origen del sistema)
-            if marker_id == 2:
-                self.get_logger().info(f"ArUco {marker_id:2d} (ORIGEN): X={x:+7.3f}m  Y={y:+7.3f}m  Z={z:+7.3f}m  | Yaw={euler[2]:+7.2f}°")
+            # Obtener el tamaño usado
+            used_size = self.marker_sizes_map.get(marker_id, self.marker_size_default)
+            
+            # Imprimir info con el tamaño usado
+            if marker_id == self.origin_marker_id:
+                self.get_logger().info(f"ArUco {marker_id:2d} (ORIGEN) | Tam: {used_size:.2f}m | X={x:+7.3f}m  Y={y:+7.3f}m  Z={z:+7.3f}m  | Yaw={euler[2]:+7.2f}°")
             elif marker_id == 3:
-                self.get_logger().info(f"ArUco {marker_id:2d} (ROBOT) : X={x:+7.3f}m  Y={y:+7.3f}m  Z={z:+7.3f}m  | Yaw={euler[2]:+7.2f}°")
+                self.get_logger().info(f"ArUco {marker_id:2d} (ROBOT)  | Tam: {used_size:.2f}m | X={x:+7.3f}m  Y={y:+7.3f}m  Z={z:+7.3f}m  | Yaw={euler[2]:+7.2f}°")
             else:
-                self.get_logger().info(f"ArUco {marker_id:2d}         : X={x:+7.3f}m  Y={y:+7.3f}m  Z={z:+7.3f}m  | Yaw={euler[2]:+7.2f}°")
+                self.get_logger().info(f"ArUco {marker_id:2d}          | Tam: {used_size:.2f}m | X={x:+7.3f}m  Y={y:+7.3f}m  Z={z:+7.3f}m  | Yaw={euler[2]:+7.2f}°")
         
         self.get_logger().info("=" * 80)
+        self.get_logger().info("NOTA: Para ver la posición con Z=0, inspecciona el frame 'world' en RViz.")
         self.get_logger().info("")
     
     def image_callback(self, msg):
@@ -197,35 +218,56 @@ class ArucoDetectorNode(Node):
         
         # Si se detectaron marcadores
         if ids is not None and len(ids) > 0:
-            # Estimar pose de cada marcador
-            rvecs, tvecs, _ = cv2.aruco.estimatePoseSingleMarkers(
-                corners,
-                self.marker_size,
-                self.camera_matrix,
-                self.dist_coeffs
-            )
             
-            # Procesar cada marcador detectado
+            # Procesar cada marcador detectado INDIVIDUALMENTE
             for i, marker_id in enumerate(ids.flatten()):
+                
+                # 1. OBTENER EL TAMAÑO CORRECTO para este ID
+                current_marker_size = self.marker_sizes_map.get(
+                    marker_id, 
+                    self.marker_size_default # Usa el tamaño por defecto si el ID no está en el mapa
+                )
+                
+                # 2. OBTENER LAS ESQUINAS SOLO DE ESTE MARCADOR
+                single_corner = np.asarray([corners[i]])
+                
+                # 3. Estimar pose para ESTE marcador usando su tamaño específico
+                # Esto es crucial para corregir la profundidad (Z)
+                rvecs_single, tvecs_single, _ = cv2.aruco.estimatePoseSingleMarkers(
+                    single_corner,
+                    current_marker_size, # <-- USAR TAMAÑO ESPECÍFICO
+                    self.camera_matrix,
+                    self.dist_coeffs
+                )
+                
+                # Extraer los vectores de rotación y traslación
+                tvec = tvecs_single[0]
+                rvec = rvecs_single[0]
+                
                 # Guardar posicion detectada
-                self.detected_markers[marker_id] = (tvecs[i], rvecs[i])
+                self.detected_markers[marker_id] = (tvec, rvec)
                 
-                # Publicar TF para este marcador
-                self.publish_tf(marker_id, rvecs[i], tvecs[i], msg.header.stamp)
+                # Publicar TF para este marcador: camera_frame -> aruco_X
+                self.publish_tf(marker_id, rvec, tvec, msg.header.stamp)
                 
+                # === LÓGICA DE TRANSFORMACIÓN INVERSA (world -> camera) ===
+                if marker_id == self.origin_marker_id:
+                    self.publish_world_to_camera_tf(rvec, tvec, msg.header.stamp)
+                # ==========================================================
+
                 # Dibujar marcador y ejes (para visualizacion)
-                cv2.aruco.drawDetectedMarkers(cv_image, corners, ids)
+                cv2.aruco.drawDetectedMarkers(cv_image, single_corner)
                 
-                # Dibujar ejes del marcador (compatible con todas las versiones)
+                # Dibujar ejes del marcador 
                 try:
                     # Intentar API nueva
                     cv2.drawFrameAxes(
                         cv_image,
                         self.camera_matrix,
                         self.dist_coeffs,
-                        rvecs[i],
-                        tvecs[i],
-                        self.marker_size * 0.5
+                        rvec,
+                        tvec,
+                        current_marker_size * 0.5 
                     )
                 except AttributeError:
                     # API antigua usa aruco.drawAxis
@@ -233,14 +275,14 @@ class ArucoDetectorNode(Node):
                         cv_image,
                         self.camera_matrix,
                         self.dist_coeffs,
-                        rvecs[i],
-                        tvecs[i],
-                        self.marker_size * 0.5
+                        rvec,
+                        tvec,
+                        current_marker_size * 0.5
                     )
                 
                 # Añadir texto con ID y posicion
                 corner = corners[i][0][0]
-                pos_text = f"ID:{marker_id} ({tvecs[i][0][0]:.2f}, {tvecs[i][0][1]:.2f}, {tvecs[i][0][2]:.2f})"
+                pos_text = f"ID:{marker_id} ({tvec[0][0]:.2f}, {tvec[0][1]:.2f}, {tvec[0][2]:.2f}) - {current_marker_size:.2f}m"
                 cv2.putText(
                     cv_image,
                     pos_text,
@@ -277,7 +319,7 @@ class ArucoDetectorNode(Node):
     
     def publish_tf(self, marker_id, rvec, tvec, timestamp):
         """
-        Publica la transformacion TF desde la camara al marcador ArUco
+        Publica la transformacion TF desde la camara al marcador ArUco (FRAME normal)
         """
         # Crear mensaje de transformacion
         t = TransformStamped()
@@ -292,10 +334,8 @@ class ArucoDetectorNode(Node):
         t.transform.translation.y = float(tvec[0][1])
         t.transform.translation.z = float(tvec[0][2])
         
-        # Convertir vector de rotacion a matriz de rotacion
+        # Convertir rotación a cuaternión
         rotation_matrix, _ = cv2.Rodrigues(rvec)
-        
-        # Convertir matriz de rotacion a cuaternion usando scipy
         rot = R.from_matrix(rotation_matrix)
         quaternion = rot.as_quat()  # [x, y, z, w]
         
@@ -307,6 +347,52 @@ class ArucoDetectorNode(Node):
         
         # Publicar transformacion
         self.tf_broadcaster.sendTransform(t)
+        
+    def publish_world_to_camera_tf(self, rvec, tvec, timestamp):
+        """
+        Publica la transformacion inversa world -> camera_frame,
+        usando el marcador de origen como ancla (world se alinea con el marcador).
+        """
+        # Obtenemos la matriz de rotación del marcador (R_C_M, Cámara a Marcador)
+        R_C_M, _ = cv2.Rodrigues(rvec)
+        
+        # Traslación de la Cámara al Marcador (T_C_M)
+        T_C_M = tvec[0] # [tx, ty, tz]
+        
+        # Para obtener la transformación world (Marcador) a Cámara (M_a_C):
+        # Rotación inversa: R_M_C = R_C_M^T
+        R_M_C = R_C_M.T
+        
+        # Traslación inversa: T_M_C = - R_M_C * T_C_M
+        T_M_C = - R_M_C @ T_C_M
+        
+        # Convertir rotación inversa de vuelta a cuaternión
+        rot_inv = R.from_matrix(R_M_C)
+        quaternion_inv = rot_inv.as_quat()
+
+        # Publicar Transformación Inversa: world -> overhead_camera_link
+        t_inv = TransformStamped()
+        t_inv.header.stamp = timestamp
+        t_inv.header.frame_id = self.world_frame # Frame de origen (Suelo, mundo)
+        t_inv.child_frame_id = self.camera_frame # Frame de destino (Cámara)
+
+        # Asignar Traslación Inversa
+        t_inv.transform.translation.x = float(T_M_C[0])
+        t_inv.transform.translation.y = float(T_M_C[1])
+        t_inv.transform.translation.z = float(T_M_C[2])
+        
+        # Asignar Cuaternión Inverso
+        t_inv.transform.rotation.x = float(quaternion_inv[0])
+        t_inv.transform.rotation.y = float(quaternion_inv[1])
+        t_inv.transform.rotation.z = float(quaternion_inv[2])
+        t_inv.transform.rotation.w = float(quaternion_inv[3])
+        
+        self.tf_broadcaster.sendTransform(t_inv)
+        self.get_logger().info(
+            f"Transformación {self.world_frame}->{self.camera_frame} publicada.", 
+            throttle_duration_sec=5.0
+        )
+
 
 def main(args=None):
     rclpy.init(args=args)
