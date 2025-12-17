@@ -6,4 +6,4 @@ export TURTLEBOT3_MODEL=waffle
 
 colcon build
 source install/setup.bash
-ros2 launch eurobot_cositas eurobot_world_launch.py
+ros2 launch eurobot_cositas Move_eurobot_launch.py
