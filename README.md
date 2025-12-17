@@ -6,4 +6,7 @@ export TURTLEBOT3_MODEL=waffle
 
 colcon build
 source install/setup.bash
+# Solo detector Aruco
+ros2 launch eurobot_cositas eurobot_world_launch.py
+# Detección y movimiento.
 ros2 launch eurobot_cositas Move_eurobot_launch.py
