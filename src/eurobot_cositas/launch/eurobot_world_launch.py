@@ -3,7 +3,7 @@ import os
 
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
-from launch.actions import IncludeLaunchDescription, ExecuteProcess
+from launch.actions import IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
@@ -23,57 +23,54 @@ def generate_launch_description():
         get_package_share_directory('turtlebot3_gazebo'),
         'launch'
     )
-    
+
     pkg_gazebo_ros = get_package_share_directory('gazebo_ros')
 
-    # Ruta del modelo del robot
-    urdf_path = os.path.join(
-        get_package_share_directory('turtlebot3_gazebo'),
-        'models',
-        'turtlebot3_' + TURTLEBOT3_MODEL,
-        'model.sdf'
-    )
-
-    # Nodo detector de ArUco
-    aruco_detector_node = Node(
-        package='eurobot_cositas',
-        executable='aruco_detector_cositas.py',
-        name='aruco_detector',
+    # ---------- ArUco TABLE detector (PBI 4.2) ----------
+    aruco_table_node = Node(
+        package='aruco_detector_pkg',
+        executable='aruco_detector',
+        name='aruco_table_detector',
         output='screen',
-        parameters=[{
-            'camera_topic': '/overhead_camera/image_raw',
-            'camera_info_topic': '/overhead_camera/camera_info',
-            'camera_frame': 'overhead_camera_link',
-            'aruco_dict': 'DICT_4X4_50',
-            'marker_size': 0.1,
-            'use_sim_time': use_sim_time,
-        }]
+        parameters=[{'use_sim_time': True}]
     )
 
     return LaunchDescription([
-        # Servidor de Gazebo con el mundo
+
+        # ---------- Gazebo server ----------
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(
                 os.path.join(pkg_gazebo_ros, 'launch', 'gzserver.launch.py')
             ),
-            launch_arguments={'world': world}.items(),     
+            launch_arguments={'world': world}.items(),
         ),
 
-        # Cliente de Gazebo (interfaz gráfica)
+        # ---------- Gazebo client ----------
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(
                 os.path.join(pkg_gazebo_ros, 'launch', 'gzclient.launch.py')
             ),
         ),
 
-        # Robot State Publisher
+        # ---------- Robot State Publisher ----------
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(
-                [launch_file_dir, '/robot_state_publisher.launch.py']
+                os.path.join(launch_file_dir, 'robot_state_publisher.launch.py')
             ),
             launch_arguments={'use_sim_time': use_sim_time}.items(),
         ),
 
-        # Nodo detector de ArUco
-        aruco_detector_node,
+        # ---------- Static overhead camera TF ----------
+        IncludeLaunchDescription(
+            PythonLaunchDescriptionSource(
+                os.path.join(
+                    get_package_share_directory('eurobot_cositas'),
+                    'launch',
+                    'static_overhead_camera.launch.py'
+                )
+            ),
+        ),
+
+        # ---------- ArUco table detector ----------
+        aruco_table_node,
     ])
