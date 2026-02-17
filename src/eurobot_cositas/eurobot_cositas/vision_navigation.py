@@ -1,3 +1,11 @@
+#!/usr/bin/env python3
+"""
+Navegación del JetBot con cámara cenital - Laboratorio I3L7
+Usa los topics /overhead_camera/aruco_{id} con datos JSON (px, py, orientation)
+ArUco 8  → robot (encima del JetBot)
+ArUco 8  → robot
+ArUcos 20,21,22,23 → destinos en el tablero
+"""
 
 import rclpy
 from rclpy.node import Node
@@ -30,8 +38,10 @@ class JetBotNavigation(Node):
     def __init__(self):
         super().__init__('movimiento_JetBot')
 
-        
-        self.listen_ids = [3, 8, 20, 21, 22, 23]
+        # --------------------------------------------------------
+        # Suscripciones a los topics de la cámara cenital
+        # --------------------------------------------------------
+        self.listen_ids = [8, 20, 21, 22, 23]
         for tid in self.listen_ids:
             topic = f'/overhead_camera/aruco_{tid}'
             self.create_subscription(
@@ -44,7 +54,7 @@ class JetBotNavigation(Node):
         # --------------------------------------------------------
         # Publicador de velocidad
         # --------------------------------------------------------
-        self.cmd_vel_pub = self.create_publisher(Twist, '/cmd_vel', 10)
+        self.cmd_vel_pub = self.create_publisher(Twist, 'cmd_vel', 10)  # relativo → /robot6/cmd_vel
 
         # --------------------------------------------------------
         # Estado compartido (acceso siempre bajo self.lock)
@@ -172,7 +182,7 @@ class JetBotNavigation(Node):
             unvisited = [a for a in ORDEN_DESEADO if a not in self.visited]
 
             if not unvisited:
-                self.get_logger().info("Ruta completa. Reiniciando ciclo...")
+                self.get_logger().info("✅ Ruta completa. Reiniciando ciclo...")
                 self.visited = []
                 unvisited = list(ORDEN_DESEADO)
 
@@ -188,7 +198,7 @@ class JetBotNavigation(Node):
         # 2. TURNING → gira hasta apuntar al objetivo
         # --------------------------------------------------
         if self.state == 'TURNING':
-            robot  = self.get_pose(3)
+            robot  = self.get_pose(8)
             target = self.get_pose(self.target_id)
 
             if robot is None or target is None:
@@ -227,7 +237,7 @@ class JetBotNavigation(Node):
         # 3. GOING → avanza recto con corrección de rumbo
         # --------------------------------------------------
         if self.state == 'GOING':
-            robot  = self.get_pose(3)
+            robot  = self.get_pose(8)
             target = self.get_pose(self.target_id)
 
             if robot is None or target is None:

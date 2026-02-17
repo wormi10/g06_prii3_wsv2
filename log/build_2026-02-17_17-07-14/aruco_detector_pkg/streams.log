@@ -1,0 +1,22 @@
+[0.558s] Invoking command in '/home/pavlo/v10/g06_prii3_wsv2/src/aruco_detector_pkg': PYTHONPATH=/home/pavlo/v10/g06_prii3_wsv2/build/aruco_detector_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/pavlo/v10/g06_prii3_wsv2/install/aruco_detector_pkg/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/aruco_detector_pkg build --build-base /home/pavlo/v10/g06_prii3_wsv2/build/aruco_detector_pkg/build install --record /home/pavlo/v10/g06_prii3_wsv2/build/aruco_detector_pkg/install.log --install-scripts $base/lib/aruco_detector_pkg --single-version-externally-managed install_data
+[0.692s] running egg_info
+[0.692s] writing ../../build/aruco_detector_pkg/aruco_detector_pkg.egg-info/PKG-INFO
+[0.692s] writing dependency_links to ../../build/aruco_detector_pkg/aruco_detector_pkg.egg-info/dependency_links.txt
+[0.693s] writing entry points to ../../build/aruco_detector_pkg/aruco_detector_pkg.egg-info/entry_points.txt
+[0.693s] writing requirements to ../../build/aruco_detector_pkg/aruco_detector_pkg.egg-info/requires.txt
+[0.693s] writing top-level names to ../../build/aruco_detector_pkg/aruco_detector_pkg.egg-info/top_level.txt
+[0.715s] reading manifest file '../../build/aruco_detector_pkg/aruco_detector_pkg.egg-info/SOURCES.txt'
+[0.716s] writing manifest file '../../build/aruco_detector_pkg/aruco_detector_pkg.egg-info/SOURCES.txt'
+[0.716s] running build
+[0.716s] running build_py
+[0.716s] running install
+[0.717s] running install_lib
+[0.718s] running install_data
+[0.718s] running install_egg_info
+[0.719s] removing '/home/pavlo/v10/g06_prii3_wsv2/install/aruco_detector_pkg/lib/python3.8/site-packages/aruco_detector_pkg-0.0.0-py3.8.egg-info' (and everything under it)
+[0.719s] Copying ../../build/aruco_detector_pkg/aruco_detector_pkg.egg-info to /home/pavlo/v10/g06_prii3_wsv2/install/aruco_detector_pkg/lib/python3.8/site-packages/aruco_detector_pkg-0.0.0-py3.8.egg-info
+[0.719s] running install_scripts
+[0.733s] Installing aruco_detector script to /home/pavlo/v10/g06_prii3_wsv2/install/aruco_detector_pkg/lib/aruco_detector_pkg
+[0.733s] Installing aruco_robot_detector script to /home/pavlo/v10/g06_prii3_wsv2/install/aruco_detector_pkg/lib/aruco_detector_pkg
+[0.734s] writing list of installed files to '/home/pavlo/v10/g06_prii3_wsv2/build/aruco_detector_pkg/install.log'
+[0.758s] Invoked command in '/home/pavlo/v10/g06_prii3_wsv2/src/aruco_detector_pkg' returned '0': PYTHONPATH=/home/pavlo/v10/g06_prii3_wsv2/build/aruco_detector_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/pavlo/v10/g06_prii3_wsv2/install/aruco_detector_pkg/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/aruco_detector_pkg build --build-base /home/pavlo/v10/g06_prii3_wsv2/build/aruco_detector_pkg/build install --record /home/pavlo/v10/g06_prii3_wsv2/build/aruco_detector_pkg/install.log --install-scripts $base/lib/aruco_detector_pkg --single-version-externally-managed install_data
