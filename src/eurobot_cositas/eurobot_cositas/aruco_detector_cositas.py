@@ -83,7 +83,7 @@ class TemplateDetectorNode(Node):
         self.get_logger().info("=" * 60)
     
     def load_template(self):
-        """Carga el template desde el package"""
+        
         try:
             pkg_dir = get_package_share_directory('eurobot_cositas')
             template_path = os.path.join(pkg_dir, 'templates', self.template_name)
