@@ -7,3 +7,11 @@ export TURTLEBOT3_MODEL=waffle
 colcon build
 source install/setup.bash
 ros2 launch eurobot_cositas Move_eurobot_launch.py
+
+
+colcon build 
+source install/setup.bash
+ros2 launch eurobot_cositas eurobot_world_launch.py 
+
+otra terminal
+ros2 run rqt_image_view rqt_image_view /template/detected_image
