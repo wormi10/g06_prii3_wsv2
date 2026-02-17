@@ -1,0 +1,63 @@
+[0.588s] Invoking command in '/home/pavlo/v10/g06_prii3_wsv2/src/eurobot_cositas': PYTHONPATH=/home/pavlo/v10/g06_prii3_wsv2/build/eurobot_cositas/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/pavlo/v10/g06_prii3_wsv2/install/eurobot_cositas/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/eurobot_cositas build --build-base /home/pavlo/v10/g06_prii3_wsv2/build/eurobot_cositas/build install --record /home/pavlo/v10/g06_prii3_wsv2/build/eurobot_cositas/install.log --install-scripts $base/lib/eurobot_cositas --single-version-externally-managed install_data
+[0.737s] running egg_info
+[0.738s] creating ../../build/eurobot_cositas/eurobot_cositas.egg-info
+[0.738s] writing ../../build/eurobot_cositas/eurobot_cositas.egg-info/PKG-INFO
+[0.738s] writing dependency_links to ../../build/eurobot_cositas/eurobot_cositas.egg-info/dependency_links.txt
+[0.738s] writing entry points to ../../build/eurobot_cositas/eurobot_cositas.egg-info/entry_points.txt
+[0.738s] writing requirements to ../../build/eurobot_cositas/eurobot_cositas.egg-info/requires.txt
+[0.738s] writing top-level names to ../../build/eurobot_cositas/eurobot_cositas.egg-info/top_level.txt
+[0.739s] writing manifest file '../../build/eurobot_cositas/eurobot_cositas.egg-info/SOURCES.txt'
+[0.765s] reading manifest file '../../build/eurobot_cositas/eurobot_cositas.egg-info/SOURCES.txt'
+[0.765s] writing manifest file '../../build/eurobot_cositas/eurobot_cositas.egg-info/SOURCES.txt'
+[0.765s] running build
+[0.765s] running build_py
+[0.766s] creating /home/pavlo/v10/g06_prii3_wsv2/build/eurobot_cositas/build
+[0.766s] creating /home/pavlo/v10/g06_prii3_wsv2/build/eurobot_cositas/build/lib
+[0.766s] creating /home/pavlo/v10/g06_prii3_wsv2/build/eurobot_cositas/build/lib/eurobot_cositas
+[0.766s] copying eurobot_cositas/aruco_detector_cositas.py -> /home/pavlo/v10/g06_prii3_wsv2/build/eurobot_cositas/build/lib/eurobot_cositas
+[0.766s] copying eurobot_cositas/vision_navigation.py -> /home/pavlo/v10/g06_prii3_wsv2/build/eurobot_cositas/build/lib/eurobot_cositas
+[0.766s] copying eurobot_cositas/__init__.py -> /home/pavlo/v10/g06_prii3_wsv2/build/eurobot_cositas/build/lib/eurobot_cositas
+[0.766s] copying eurobot_cositas/subcriptor.py -> /home/pavlo/v10/g06_prii3_wsv2/build/eurobot_cositas/build/lib/eurobot_cositas
+[0.766s] running install
+[0.767s] running install_lib
+[0.768s] creating /home/pavlo/v10/g06_prii3_wsv2/install/eurobot_cositas/lib/python3.8/site-packages/eurobot_cositas
+[0.768s] copying /home/pavlo/v10/g06_prii3_wsv2/build/eurobot_cositas/build/lib/eurobot_cositas/aruco_detector_cositas.py -> /home/pavlo/v10/g06_prii3_wsv2/install/eurobot_cositas/lib/python3.8/site-packages/eurobot_cositas
+[0.768s] copying /home/pavlo/v10/g06_prii3_wsv2/build/eurobot_cositas/build/lib/eurobot_cositas/vision_navigation.py -> /home/pavlo/v10/g06_prii3_wsv2/install/eurobot_cositas/lib/python3.8/site-packages/eurobot_cositas
+[0.768s] copying /home/pavlo/v10/g06_prii3_wsv2/build/eurobot_cositas/build/lib/eurobot_cositas/__init__.py -> /home/pavlo/v10/g06_prii3_wsv2/install/eurobot_cositas/lib/python3.8/site-packages/eurobot_cositas
+[0.768s] copying /home/pavlo/v10/g06_prii3_wsv2/build/eurobot_cositas/build/lib/eurobot_cositas/subcriptor.py -> /home/pavlo/v10/g06_prii3_wsv2/install/eurobot_cositas/lib/python3.8/site-packages/eurobot_cositas
+[0.768s] byte-compiling /home/pavlo/v10/g06_prii3_wsv2/install/eurobot_cositas/lib/python3.8/site-packages/eurobot_cositas/aruco_detector_cositas.py to aruco_detector_cositas.cpython-38.pyc
+[0.771s] byte-compiling /home/pavlo/v10/g06_prii3_wsv2/install/eurobot_cositas/lib/python3.8/site-packages/eurobot_cositas/vision_navigation.py to vision_navigation.cpython-38.pyc
+[0.772s] byte-compiling /home/pavlo/v10/g06_prii3_wsv2/install/eurobot_cositas/lib/python3.8/site-packages/eurobot_cositas/__init__.py to __init__.cpython-38.pyc
+[0.772s] byte-compiling /home/pavlo/v10/g06_prii3_wsv2/install/eurobot_cositas/lib/python3.8/site-packages/eurobot_cositas/subcriptor.py to subcriptor.cpython-38.pyc
+[0.773s] running install_data
+[0.774s] creating /home/pavlo/v10/g06_prii3_wsv2/install/eurobot_cositas/share/ament_index
+[0.774s] creating /home/pavlo/v10/g06_prii3_wsv2/install/eurobot_cositas/share/ament_index/resource_index
+[0.774s] creating /home/pavlo/v10/g06_prii3_wsv2/install/eurobot_cositas/share/ament_index/resource_index/packages
+[0.774s] copying resource/eurobot_cositas -> /home/pavlo/v10/g06_prii3_wsv2/install/eurobot_cositas/share/ament_index/resource_index/packages
+[0.774s] copying package.xml -> /home/pavlo/v10/g06_prii3_wsv2/install/eurobot_cositas/share/eurobot_cositas
+[0.774s] creating /home/pavlo/v10/g06_prii3_wsv2/install/eurobot_cositas/share/eurobot_cositas/launch
+[0.774s] copying launch/static_overhead_camera.launch.py -> /home/pavlo/v10/g06_prii3_wsv2/install/eurobot_cositas/share/eurobot_cositas/launch
+[0.774s] copying launch/eurobot_world_launch.py -> /home/pavlo/v10/g06_prii3_wsv2/install/eurobot_cositas/share/eurobot_cositas/launch
+[0.774s] copying launch/subcriptor_launch.py -> /home/pavlo/v10/g06_prii3_wsv2/install/eurobot_cositas/share/eurobot_cositas/launch
+[0.774s] copying launch/Move_eurobot_launch.py -> /home/pavlo/v10/g06_prii3_wsv2/install/eurobot_cositas/share/eurobot_cositas/launch
+[0.775s] creating /home/pavlo/v10/g06_prii3_wsv2/install/eurobot_cositas/share/eurobot_cositas/rosbag2
+[0.775s] copying rosbag2/rosbag2_2025_12_10-20_33_34_0.db3 -> /home/pavlo/v10/g06_prii3_wsv2/install/eurobot_cositas/share/eurobot_cositas/rosbag2
+[0.978s] copying rosbag2/rosbag2_2025_12_10-20_33_34_0.db3-shm -> /home/pavlo/v10/g06_prii3_wsv2/install/eurobot_cositas/share/eurobot_cositas/rosbag2
+[0.978s] copying rosbag2/rosbag2_2025_12_10-20_33_34_0.db3-wal -> /home/pavlo/v10/g06_prii3_wsv2/install/eurobot_cositas/share/eurobot_cositas/rosbag2
+[0.978s] copying rosbag2/metadata.yaml -> /home/pavlo/v10/g06_prii3_wsv2/install/eurobot_cositas/share/eurobot_cositas/rosbag2
+[0.979s] creating /home/pavlo/v10/g06_prii3_wsv2/install/eurobot_cositas/share/eurobot_cositas/world
+[0.979s] copying world/Tablero.world -> /home/pavlo/v10/g06_prii3_wsv2/install/eurobot_cositas/share/eurobot_cositas/world
+[0.979s] copying world/Tablero2.world -> /home/pavlo/v10/g06_prii3_wsv2/install/eurobot_cositas/share/eurobot_cositas/world
+[0.980s] copying world/Tablero (copia).world -> /home/pavlo/v10/g06_prii3_wsv2/install/eurobot_cositas/share/eurobot_cositas/world
+[0.981s] creating /home/pavlo/v10/g06_prii3_wsv2/install/eurobot_cositas/share/eurobot_cositas/config
+[0.981s] copying config/eurobot_view.rviz -> /home/pavlo/v10/g06_prii3_wsv2/install/eurobot_cositas/share/eurobot_cositas/config
+[0.981s] creating /home/pavlo/v10/g06_prii3_wsv2/install/eurobot_cositas/share/eurobot_cositas/templates
+[0.981s] copying templates/template.png -> /home/pavlo/v10/g06_prii3_wsv2/install/eurobot_cositas/share/eurobot_cositas/templates
+[0.982s] running install_egg_info
+[0.984s] Copying ../../build/eurobot_cositas/eurobot_cositas.egg-info to /home/pavlo/v10/g06_prii3_wsv2/install/eurobot_cositas/lib/python3.8/site-packages/eurobot_cositas-0.0.0-py3.8.egg-info
+[0.985s] running install_scripts
+[0.999s] Installing aruco_detector_cositas script to /home/pavlo/v10/g06_prii3_wsv2/install/eurobot_cositas/lib/eurobot_cositas
+[0.999s] Installing subcriptor script to /home/pavlo/v10/g06_prii3_wsv2/install/eurobot_cositas/lib/eurobot_cositas
+[0.999s] Installing vision_navigation script to /home/pavlo/v10/g06_prii3_wsv2/install/eurobot_cositas/lib/eurobot_cositas
+[0.999s] writing list of installed files to '/home/pavlo/v10/g06_prii3_wsv2/build/eurobot_cositas/install.log'
+[1.017s] Invoked command in '/home/pavlo/v10/g06_prii3_wsv2/src/eurobot_cositas' returned '0': PYTHONPATH=/home/pavlo/v10/g06_prii3_wsv2/build/eurobot_cositas/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/pavlo/v10/g06_prii3_wsv2/install/eurobot_cositas/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/eurobot_cositas build --build-base /home/pavlo/v10/g06_prii3_wsv2/build/eurobot_cositas/build install --record /home/pavlo/v10/g06_prii3_wsv2/build/eurobot_cositas/install.log --install-scripts $base/lib/eurobot_cositas --single-version-externally-managed install_data

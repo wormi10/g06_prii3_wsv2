@@ -1,4 +1,5 @@
 [console_scripts]
 aruco_detector_cositas = eurobot_cositas.aruco_detector_cositas:main
+subcriptor = eurobot_cositas.subcriptor:main
 vision_navigation = eurobot_cositas.vision_navigation:main
 

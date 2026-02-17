@@ -1,0 +1,43 @@
+[0.598s] Invoking command in '/home/pavlo/v10/g06_prii3_wsv2/src/aruco_detector_pkg': PYTHONPATH=/home/pavlo/v10/g06_prii3_wsv2/build/aruco_detector_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/pavlo/v10/g06_prii3_wsv2/install/aruco_detector_pkg/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/aruco_detector_pkg build --build-base /home/pavlo/v10/g06_prii3_wsv2/build/aruco_detector_pkg/build install --record /home/pavlo/v10/g06_prii3_wsv2/build/aruco_detector_pkg/install.log --install-scripts $base/lib/aruco_detector_pkg --single-version-externally-managed install_data
+[0.746s] running egg_info
+[0.746s] creating ../../build/aruco_detector_pkg/aruco_detector_pkg.egg-info
+[0.746s] writing ../../build/aruco_detector_pkg/aruco_detector_pkg.egg-info/PKG-INFO
+[0.747s] writing dependency_links to ../../build/aruco_detector_pkg/aruco_detector_pkg.egg-info/dependency_links.txt
+[0.747s] writing entry points to ../../build/aruco_detector_pkg/aruco_detector_pkg.egg-info/entry_points.txt
+[0.747s] writing requirements to ../../build/aruco_detector_pkg/aruco_detector_pkg.egg-info/requires.txt
+[0.747s] writing top-level names to ../../build/aruco_detector_pkg/aruco_detector_pkg.egg-info/top_level.txt
+[0.748s] writing manifest file '../../build/aruco_detector_pkg/aruco_detector_pkg.egg-info/SOURCES.txt'
+[0.773s] reading manifest file '../../build/aruco_detector_pkg/aruco_detector_pkg.egg-info/SOURCES.txt'
+[0.773s] writing manifest file '../../build/aruco_detector_pkg/aruco_detector_pkg.egg-info/SOURCES.txt'
+[0.773s] running build
+[0.774s] running build_py
+[0.774s] creating /home/pavlo/v10/g06_prii3_wsv2/build/aruco_detector_pkg/build
+[0.774s] creating /home/pavlo/v10/g06_prii3_wsv2/build/aruco_detector_pkg/build/lib
+[0.774s] creating /home/pavlo/v10/g06_prii3_wsv2/build/aruco_detector_pkg/build/lib/aruco_detector_pkg
+[0.774s] copying aruco_detector_pkg/aruco_detector.py -> /home/pavlo/v10/g06_prii3_wsv2/build/aruco_detector_pkg/build/lib/aruco_detector_pkg
+[0.774s] copying aruco_detector_pkg/aruco_robot_detector.py -> /home/pavlo/v10/g06_prii3_wsv2/build/aruco_detector_pkg/build/lib/aruco_detector_pkg
+[0.774s] copying aruco_detector_pkg/__init__.py -> /home/pavlo/v10/g06_prii3_wsv2/build/aruco_detector_pkg/build/lib/aruco_detector_pkg
+[0.774s] running install
+[0.775s] running install_lib
+[0.776s] creating /home/pavlo/v10/g06_prii3_wsv2/install/aruco_detector_pkg/lib/python3.8/site-packages/aruco_detector_pkg
+[0.776s] copying /home/pavlo/v10/g06_prii3_wsv2/build/aruco_detector_pkg/build/lib/aruco_detector_pkg/aruco_detector.py -> /home/pavlo/v10/g06_prii3_wsv2/install/aruco_detector_pkg/lib/python3.8/site-packages/aruco_detector_pkg
+[0.776s] copying /home/pavlo/v10/g06_prii3_wsv2/build/aruco_detector_pkg/build/lib/aruco_detector_pkg/aruco_robot_detector.py -> /home/pavlo/v10/g06_prii3_wsv2/install/aruco_detector_pkg/lib/python3.8/site-packages/aruco_detector_pkg
+[0.776s] copying /home/pavlo/v10/g06_prii3_wsv2/build/aruco_detector_pkg/build/lib/aruco_detector_pkg/__init__.py -> /home/pavlo/v10/g06_prii3_wsv2/install/aruco_detector_pkg/lib/python3.8/site-packages/aruco_detector_pkg
+[0.777s] byte-compiling /home/pavlo/v10/g06_prii3_wsv2/install/aruco_detector_pkg/lib/python3.8/site-packages/aruco_detector_pkg/aruco_detector.py to aruco_detector.cpython-38.pyc
+[0.778s] byte-compiling /home/pavlo/v10/g06_prii3_wsv2/install/aruco_detector_pkg/lib/python3.8/site-packages/aruco_detector_pkg/aruco_robot_detector.py to aruco_robot_detector.cpython-38.pyc
+[0.779s] byte-compiling /home/pavlo/v10/g06_prii3_wsv2/install/aruco_detector_pkg/lib/python3.8/site-packages/aruco_detector_pkg/__init__.py to __init__.cpython-38.pyc
+[0.780s] running install_data
+[0.780s] creating /home/pavlo/v10/g06_prii3_wsv2/install/aruco_detector_pkg/share/ament_index
+[0.780s] creating /home/pavlo/v10/g06_prii3_wsv2/install/aruco_detector_pkg/share/ament_index/resource_index
+[0.780s] creating /home/pavlo/v10/g06_prii3_wsv2/install/aruco_detector_pkg/share/ament_index/resource_index/packages
+[0.780s] copying resource/aruco_detector_pkg -> /home/pavlo/v10/g06_prii3_wsv2/install/aruco_detector_pkg/share/ament_index/resource_index/packages
+[0.780s] copying package.xml -> /home/pavlo/v10/g06_prii3_wsv2/install/aruco_detector_pkg/share/aruco_detector_pkg
+[0.781s] creating /home/pavlo/v10/g06_prii3_wsv2/install/aruco_detector_pkg/share/aruco_detector_pkg/launch
+[0.781s] copying launch/static_robot_aruco_tf.launch.py -> /home/pavlo/v10/g06_prii3_wsv2/install/aruco_detector_pkg/share/aruco_detector_pkg/launch
+[0.781s] running install_egg_info
+[0.782s] Copying ../../build/aruco_detector_pkg/aruco_detector_pkg.egg-info to /home/pavlo/v10/g06_prii3_wsv2/install/aruco_detector_pkg/lib/python3.8/site-packages/aruco_detector_pkg-0.0.0-py3.8.egg-info
+[0.783s] running install_scripts
+[0.797s] Installing aruco_detector script to /home/pavlo/v10/g06_prii3_wsv2/install/aruco_detector_pkg/lib/aruco_detector_pkg
+[0.797s] Installing aruco_robot_detector script to /home/pavlo/v10/g06_prii3_wsv2/install/aruco_detector_pkg/lib/aruco_detector_pkg
+[0.797s] writing list of installed files to '/home/pavlo/v10/g06_prii3_wsv2/build/aruco_detector_pkg/install.log'
+[0.816s] Invoked command in '/home/pavlo/v10/g06_prii3_wsv2/src/aruco_detector_pkg' returned '0': PYTHONPATH=/home/pavlo/v10/g06_prii3_wsv2/build/aruco_detector_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/pavlo/v10/g06_prii3_wsv2/install/aruco_detector_pkg/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/aruco_detector_pkg build --build-base /home/pavlo/v10/g06_prii3_wsv2/build/aruco_detector_pkg/build install --record /home/pavlo/v10/g06_prii3_wsv2/build/aruco_detector_pkg/install.log --install-scripts $base/lib/aruco_detector_pkg --single-version-externally-managed install_data

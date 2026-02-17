@@ -1,189 +1,314 @@
-#!/usr/bin/env python3
 
 import rclpy
 from rclpy.node import Node
+from std_msgs.msg import String
 from geometry_msgs.msg import Twist
-from tf2_ros import Buffer, TransformListener
-import math
+import json
+import threading
 import time
-from scipy.spatial.transform import Rotation as R
+import math
 
-class VisionGuidedNavigation(Node):
+# ============================================================
+#  CONFIGURACIÓN GLOBAL (ajusta aquí sin tocar el resto)
+# ============================================================
+
+ORDEN_DESEADO       = [20, 21, 22, 23]   # Ruta a seguir
+LINEAR_SPEED        = 0.15               # m/s avance recto
+ANGULAR_SPEED       = 0.4               # rad/s giro
+DISTANCE_TOLERANCE  = 40.0              # píxeles para considerar "llegado"
+WAIT_TIME           = 3.0               # segundos de espera en cada punto
+START_DELAY         = 3.0               # segundos de espera inicial
+STALE_TIMEOUT       = 1.5              # segundos sin dato → ignora lectura
+
+# Corrección continua de rumbo mientras avanza (PD sobre el ángulo)
+KP_HEADING          = 0.008            # ganancia proporcional de dirección
+KD_HEADING          = 0.002            # ganancia derivativa de dirección
+MAX_HEADING_CORRECT = 0.35             # límite de corrección angular (rad/s)
+
+
+class JetBotNavigation(Node):
     def __init__(self):
-        super().__init__('vision_guided_navigation')
-        
-        # ==========================================
-        # CONFIGURACIÓN DE RUTA Y PARÁMETROS
-        # ==========================================
-        # Pon aquí los ArUcos en el orden exacto que quieras:
-        self.ORDEN_DESEADO = [20, 21, 22, 23] 
-        
-        self.linear_speed = 0.08        # Velocidad de avance
-        self.angular_speed = 0.3     # Velocidad de giro constante
-        self.distance_tolerance = 0.35  # Margen para detenerse ante el ArUco
-        self.wait_time = 5.0            # Tiempo de espera en cada punto
-        self.start_delay = 5.0          # Tiempo de espera inicial
-        
-        # Si el robot se desvía a la izquierda al ir recto, pon un valor negativo pequeño:
-        self.drift_correction = -0.00 
-        
-        # ==========================================
-        # INICIALIZACIÓN DE ROS 2
-        # ==========================================
-        self.cmd_vel_pub = self.create_publisher(Twist, '/cmd_vel', 10)
-        self.tf_buffer = Buffer()
-        self.tf_listener = TransformListener(self.tf_buffer, self)
-        
-        self.target_aruco = None
-        self.state = 'WAITING_FOR_RVIZ' 
-        self.visited_arucos = []
-        self.detected_arucos = []
-        self.initialization_complete = False
-        
-        self.reference_frame = 'aruco_2' # El origen de coordenadas
-        self.robot_frame = 'aruco_3'     # El robot
-        
-        self.init_timer = self.create_timer(0.5, self.initialize_arucos)
-        self.navigation_timer = None
-        self.start_time = time.time()
-        
-        self.get_logger().info("Nodo iniciado. Esperando conexión de visión...")
+        super().__init__('movimiento_JetBot')
 
-    def initialize_arucos(self):
-        """Busca los ArUcos de la lista en el orden indicado."""
-        if self.initialization_complete: return
-        try:
-            # Confirmar que vemos la base y el robot
-            self.tf_buffer.lookup_transform(self.reference_frame, self.robot_frame, rclpy.time.Time())
-            
-            temp_detected = []
-            for i in self.ORDEN_DESEADO:
-                try:
-                    self.tf_buffer.lookup_transform(
-                        self.reference_frame, 
-                        f'aruco_{i}', 
-                        rclpy.time.Time(), 
-                        timeout=rclpy.duration.Duration(seconds=0.05)
-                    )
-                    temp_detected.append(i)
-                except:
-                    continue # Si no ve uno, intenta el siguiente de la lista
-            
-            if temp_detected:
-                self.detected_arucos = temp_detected
-                self.initialization_complete = True
-                self.init_timer.cancel()
-                self.navigation_timer = self.create_timer(0.1, self.navigation_loop)
-                self.get_logger().info(f"RUTA CARGADA: {self.detected_arucos}")
-        except: return
-
-    def get_absolute_pose(self, frame_name):
-        """Obtiene (x, y, yaw) respecto al ArUco 2."""
-        try:
-            t = self.tf_buffer.lookup_transform(
-                self.reference_frame, 
-                frame_name, 
-                rclpy.time.Time(), 
-                timeout=rclpy.duration.Duration(seconds=0.1)
+        
+        self.listen_ids = [3, 8, 20, 21, 22, 23]
+        for tid in self.listen_ids:
+            topic = f'/overhead_camera/aruco_{tid}'
+            self.create_subscription(
+                String,
+                topic,
+                lambda msg, tid=tid: self.aruco_cb(msg, tid),
+                10
             )
-            quat = t.transform.rotation
-            yaw = R.from_quat([quat.x, quat.y, quat.z, quat.w]).as_euler('xyz')[2]
-            return (t.transform.translation.x, t.transform.translation.y, yaw)
-        except: return None
+
+        # --------------------------------------------------------
+        # Publicador de velocidad
+        # --------------------------------------------------------
+        self.cmd_vel_pub = self.create_publisher(Twist, '/cmd_vel', 10)
+
+        # --------------------------------------------------------
+        # Estado compartido (acceso siempre bajo self.lock)
+        # --------------------------------------------------------
+        self.raw  = {}          # {id: {'px', 'py', 'orientation', 'last_seen'}}
+        self.lock = threading.Lock()
+
+        # --------------------------------------------------------
+        # Máquina de estados
+        # --------------------------------------------------------
+        self.state           = 'WAITING'
+        self.target_id       = None
+        self.visited         = []
+        self.start_time      = time.time()
+
+        # Variables para el controlador PD de rumbo
+        self._prev_heading_error = 0.0
+        self._prev_heading_time  = time.time()
+
+        # Variable auxiliar para el estado WAITING_AT_POINT
+        self._wait_start = None
+
+        # --------------------------------------------------------
+        # Timer principal de navegación (10 Hz)
+        # --------------------------------------------------------
+        self.create_timer(0.1, self.navigation_loop)
+
+        self.get_logger().info("=" * 55)
+        self.get_logger().info("  JetBot Navigation arrancado")
+        self.get_logger().info(f"  Ruta planificada: {ORDEN_DESEADO}")
+        self.get_logger().info(f"  Esperando {START_DELAY}s antes de mover...")
+        self.get_logger().info("=" * 55)
+
+    # ==========================================================
+    #  CALLBACK ArUco
+    # ==========================================================
+
+    def aruco_cb(self, msg: String, tid: int):
+        """
+        Recibe JSON con px, py, orientation para cada ArUco.
+        Actualiza self.raw de forma thread-safe.
+        """
+        try:
+            data = json.loads(msg.data)
+        except Exception:
+            return
+
+        try:
+            px          = float(data.get('px', 0.0))
+            py          = float(data.get('py', 0.0))
+            orientation = float(data.get('orientation', 0.0))
+        except Exception:
+            return
+
+        with self.lock:
+            self.raw[tid] = {
+                'px':          px,
+                'py':          py,
+                'orientation': orientation,
+                'last_seen':   time.time()
+            }
+
+    # ==========================================================
+    #  HELPERS DE LECTURA
+    # ==========================================================
+
+    def get_pose(self, tid):
+        """
+        Devuelve (px, py, orientation) del ArUco `tid`
+        o None si no hay dato reciente.
+        """
+        with self.lock:
+            entry = self.raw.get(tid)
+
+        if entry is None:
+            return None
+        if (time.time() - entry['last_seen']) > STALE_TIMEOUT:
+            return None   # dato obsoleto
+
+        return entry['px'], entry['py'], entry['orientation']
+
+    def pixel_distance(self, ax, ay, bx, by):
+        """Distancia euclidiana en píxeles entre dos puntos."""
+        return math.sqrt((ax - bx) ** 2 + (ay - by) ** 2)
+
+    def pixel_angle(self, from_x, from_y, to_x, to_y):
+        """
+        Ángulo (rad) del vector que va de (from) a (to)
+        en coordenadas de imagen (Y apunta hacia abajo).
+        """
+        return math.atan2(to_y - from_y, to_x - from_x)
+
+    # ==========================================================
+    #  CONTROL DE VELOCIDAD
+    # ==========================================================
 
     def publish_vel(self, lin, ang):
         msg = Twist()
-        msg.linear.x = float(lin)
+        msg.linear.x  = float(lin)
         msg.angular.z = float(ang)
         self.cmd_vel_pub.publish(msg)
 
+    def stop(self):
+        self.publish_vel(0.0, 0.0)
+
+    # ==========================================================
+    #  MÁQUINA DE ESTADOS  (llamada a 10 Hz)
+    # ==========================================================
+
     def navigation_loop(self):
-        if self.state == 'WAITING_FOR_RVIZ':
-            if (time.time() - self.start_time) > self.start_delay:
+
+        # --------------------------------------------------
+        # 0. ESPERA INICIAL antes de arrancar
+        # --------------------------------------------------
+        if self.state == 'WAITING':
+            if (time.time() - self.start_time) > START_DELAY:
+                self.get_logger().info("Arrancando navegación...")
                 self.state = 'IDLE'
             return
 
-        # 1. SELECCIÓN DE OBJETIVO (ORDENADO)
+        # --------------------------------------------------
+        # 1. IDLE → seleccionar siguiente objetivo
+        # --------------------------------------------------
         if self.state == 'IDLE':
-            unvisited = [a for a in self.detected_arucos if a not in self.visited_arucos]
+            unvisited = [a for a in ORDEN_DESEADO if a not in self.visited]
+
             if not unvisited:
-                self.visited_arucos = [] # Reiniciar ciclo si se desea
-                unvisited = self.detected_arucos
-            
-            self.target_aruco = unvisited[0]
-            self.visited_arucos.append(self.target_aruco)
-            self.get_logger().info(f"--- NUEVO DESTINO: ArUco {self.target_aruco} ---")
-            self.state = 'START_TURN'
+                self.get_logger().info("Ruta completa. Reiniciando ciclo...")
+                self.visited = []
+                unvisited = list(ORDEN_DESEADO)
+
+            self.target_id = unvisited[0]
+            self.visited.append(self.target_id)
+            self._prev_heading_error = 0.0
+            self._prev_heading_time  = time.time()
+            self.get_logger().info(f"─── NUEVO DESTINO → ArUco {self.target_id} ───")
+            self.state = 'TURNING'
             return
 
-        # 2. GIRO ÚNICO (POR TIEMPO)
-        if self.state == 'START_TURN':
-            robot = self.get_absolute_pose(self.robot_frame)
-            target = self.get_absolute_pose(f'aruco_{self.target_aruco}')
-            
-            if robot and target:
-                dx, dy = target[0] - robot[0], target[1] - robot[1]
-                target_angle = math.atan2(dy, dx)
-                # Inversión de signo solicitada para tu setup
-                if self.target_aruco in [20, 21,22]:
-                 angle_error = -math.atan2(math.sin(target_angle - robot[2]), math.cos(target_angle - robot[2]))
-                else:
-                 angle_error = math.atan2(math.sin(target_angle - robot[2]), math.cos(target_angle - robot[2]))
-                duration = abs(angle_error) / self.angular_speed
-                direction = 1.0 if angle_error > 0 else -1.0
-                
-                self.get_logger().info(f"Girando {math.degrees(angle_error):.1f}°...")
-                t_end = time.time() + duration
-                while time.time() < t_end:
-                    self.publish_vel(0.0, self.angular_speed * direction)
-                    time.sleep(0.01)
-                
-                self.publish_vel(0.0, 0.0)
-                time.sleep(1.2) # Pausa de estabilización clave para el siguiente paso
-                self.state = 'GO_STRAIGHT'
+        # --------------------------------------------------
+        # 2. TURNING → gira hasta apuntar al objetivo
+        # --------------------------------------------------
+        if self.state == 'TURNING':
+            robot  = self.get_pose(3)
+            target = self.get_pose(self.target_id)
+
+            if robot is None or target is None:
+                self.get_logger().warn("⚠ Sin datos de cámara, esperando...")
+                self.stop()
+                return
+
+            rx, ry, robot_orientation = robot
+            tx, ty, _                 = target
+
+            # Ángulo hacia el objetivo en la imagen
+            angle_to_target = self.pixel_angle(rx, ry, tx, ty)
+
+            # Error de heading (diferencia normalizada entre -π y π)
+            heading_error = self._normalize_angle(angle_to_target - robot_orientation)
+
+            self.get_logger().info(
+                f"  TURNING | error={math.degrees(heading_error):.1f}°",
+                throttle_duration_sec=0.5
+            )
+
+            # Si el error es pequeño, ya estamos alineados
+            if abs(heading_error) < math.radians(8):
+                self.stop()
+                time.sleep(0.3)
+                self.state = 'GOING'
+                self.get_logger().info("  ✓ Alineado. Avanzando...")
+                return
+
+            # Girar en la dirección correcta
+            direction = 1.0 if heading_error > 0 else -1.0
+            self.publish_vel(0.0, ANGULAR_SPEED * direction)
             return
 
-        # 3. AVANCE RECTO (HASTA LLEGAR A POSICIÓN)
-        if self.state == 'GO_STRAIGHT':
-            robot = self.get_absolute_pose(self.robot_frame)
-            target = self.get_absolute_pose(f'aruco_{self.target_aruco}')
-            
-            if robot and target:
-                dx, dy = target[0] - robot[0], target[1] - robot[1]
-                dist = math.sqrt(dx**2 + dy**2)
-                
-                if dist > self.distance_tolerance:
-                    # Avanza recto + compensación mecánica si es necesaria
-                    if self.target_aruco in [21, 22, 23]:
-                        self.drift_correction = -0.027
-                    else:
-                        self.drift_correction = 0.00   
-                    self.publish_vel(self.linear_speed, self.drift_correction)
-                else:
-                    self.get_logger().info(f"¡Llegado al ArUco {self.target_aruco}!")
-                    self.publish_vel(0.0, 0.0)
-                    self.state = 'WAITING'
+        # --------------------------------------------------
+        # 3. GOING → avanza recto con corrección de rumbo
+        # --------------------------------------------------
+        if self.state == 'GOING':
+            robot  = self.get_pose(3)
+            target = self.get_pose(self.target_id)
+
+            if robot is None or target is None:
+                self.get_logger().warn("⚠ Sin datos de cámara, parando.")
+                self.stop()
+                return
+
+            rx, ry, robot_orientation = robot
+            tx, ty, _                 = target
+
+            dist = self.pixel_distance(rx, ry, tx, ty)
+
+            # ¿Llegamos?
+            if dist <= DISTANCE_TOLERANCE:
+                self.stop()
+                self.get_logger().info(f"  ✓ Llegado al ArUco {self.target_id}!")
+                self._wait_start = time.time()
+                self.state = 'WAITING_AT_POINT'
+                return
+
+            # ── Corrección continua de rumbo (controlador PD) ──
+            angle_to_target = self.pixel_angle(rx, ry, tx, ty)
+            heading_error   = self._normalize_angle(angle_to_target - robot_orientation)
+
+            now    = time.time()
+            dt     = max(now - self._prev_heading_time, 1e-3)
+            d_term = (heading_error - self._prev_heading_error) / dt
+
+            angular_correction = (KP_HEADING * heading_error) + (KD_HEADING * d_term)
+            angular_correction = max(-MAX_HEADING_CORRECT,
+                                     min(MAX_HEADING_CORRECT, angular_correction))
+
+            self._prev_heading_error = heading_error
+            self._prev_heading_time  = now
+
+            self.get_logger().info(
+                f"  GOING | dist={dist:.0f}px | err={math.degrees(heading_error):.1f}° | corr={angular_correction:.3f}",
+                throttle_duration_sec=0.5
+            )
+
+            self.publish_vel(LINEAR_SPEED, angular_correction)
             return
 
-        # 4. ESPERA ANTES DEL SIGUIENTE
-        if self.state == 'WAITING':
-            if not hasattr(self, '_w_start'): self._w_start = time.time()
-            
-            if (time.time() - self._w_start) > self.wait_time:
-                del self._w_start
-                self.state = 'IDLE' # Volver a IDLE recalcula todo para el siguiente ArUco
-            else:
-                self.publish_vel(0.0, 0.0)
+        # --------------------------------------------------
+        # 4. WAITING_AT_POINT → espera antes del siguiente
+        # --------------------------------------------------
+        if self.state == 'WAITING_AT_POINT':
+            self.stop()
+            elapsed = time.time() - self._wait_start
+
+            if elapsed >= WAIT_TIME:
+                self.get_logger().info(
+                    f"  Espera completada. Siguiente destino..."
+                )
+                self.state = 'IDLE'
+            return
+
+    # ==========================================================
+    #  UTILIDADES
+    # ==========================================================
+
+    def _normalize_angle(self, angle):
+        """Normaliza un ángulo al rango [-π, π]."""
+        while angle >  math.pi: angle -= 2 * math.pi
+        while angle < -math.pi: angle += 2 * math.pi
+        return angle
+
+
+# ==========================================================
+#  MAIN
+# ==========================================================
 
 def main(args=None):
     rclpy.init(args=args)
-    node = VisionGuidedNavigation()
+    node = JetBotNavigation()
     try:
         rclpy.spin(node)
     except KeyboardInterrupt:
         pass
     finally:
-        node.publish_vel(0.0, 0.0)
+        node.stop()
         node.destroy_node()
         rclpy.shutdown()
 
