@@ -27,7 +27,7 @@ class TemplateDetectorNode(Node):
         # Template Matching
         self.declare_parameter('template_name', 'template.png')
         self.declare_parameter('match_threshold', 0.6)  # Ajustado para mejor detección
-        self.declare_parameter('num_targets', 2)  # Solo 2 cuadrados del centro
+        self.declare_parameter('num_targets', 3)  # Solo 3 cuadrados del centro
         
         # Región de interés (para ignorar los lados)
         self.declare_parameter('roi_margin_percent', 15.0)  # % de margen a ignorar
@@ -92,7 +92,7 @@ class TemplateDetectorNode(Node):
             
             if self.template is not None:
                 h, w = self.template.shape[:2]
-                self.get_logger().info(f"✓ Template cargado: {template_path} ({w}x{h}px)")
+                self.get_logger().info(f"Template cargado: {template_path} ({w}x{h}px)")
             else:
                 self.get_logger().error(f" No se pudo cargar: {template_path}")
         except Exception as e:
