@@ -1,0 +1,4 @@
+[console_scripts]
+aruco_detector = aruco_detector_pkg.aruco_detector:main
+aruco_robot_detector = aruco_detector_pkg.aruco_robot_detector:main
+

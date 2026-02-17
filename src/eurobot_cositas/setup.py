@@ -25,6 +25,9 @@ setup(
         # Instalar configuracion de RViz
         (os.path.join('share', package_name, 'config'),
             glob('config/*.rviz')),
+            
+            #Templates
+        (os.path.join('share', package_name, 'templates'), glob('templates/*.png')),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
@@ -34,8 +37,8 @@ setup(
     license='Apache License 2.0',
     entry_points={
         'console_scripts': [
-            'aruco_detector_cositas.py = eurobot_cositas.aruco_detector_cositas:main',
-            'vision_navigation.py = eurobot_cositas.vision_navigation:main',
+            'aruco_detector_cositas = eurobot_cositas.aruco_detector_cositas:main',
+            'vision_navigation = eurobot_cositas.vision_navigation:main',
         ],
     },
 )

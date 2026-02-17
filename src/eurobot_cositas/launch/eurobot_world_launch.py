@@ -37,9 +37,9 @@ def generate_launch_description():
 
     # ---------- ArUco ROBOT detector (PBI 4.2 – robot) ----------
     aruco_robot_node = Node(
-        package='aruco_detector_pkg',
-        executable='aruco_robot_detector',
-        name='aruco_robot_detector',
+        package='eurobot_cositas',
+        executable='aruco_detector_cositas',
+        name='aruco_detector_cositas',
         output='screen',
         parameters=[{'use_sim_time': True}]
     )

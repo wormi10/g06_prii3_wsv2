@@ -1,0 +1,4 @@
+[console_scripts]
+aruco_detector_cositas.py = eurobot_cositas.aruco_detector_cositas:main
+vision_navigation.py = eurobot_cositas.vision_navigation:main
+

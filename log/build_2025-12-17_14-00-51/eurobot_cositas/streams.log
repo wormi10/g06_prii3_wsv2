@@ -1,0 +1,25 @@
+[1.164s] Invoking command in '/home/wormi/sprint4/v6/g06_prii3_wsv2/src/eurobot_cositas': PYTHONPATH=/home/wormi/sprint4/v6/g06_prii3_wsv2/build/eurobot_cositas/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/wormi/sprint4/v6/g06_prii3_wsv2/install/eurobot_cositas/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/eurobot_cositas build --build-base /home/wormi/sprint4/v6/g06_prii3_wsv2/build/eurobot_cositas/build install --record /home/wormi/sprint4/v6/g06_prii3_wsv2/build/eurobot_cositas/install.log --install-scripts $base/lib/eurobot_cositas --single-version-externally-managed install_data
+[1.436s] running egg_info
+[1.436s] writing ../../build/eurobot_cositas/eurobot_cositas.egg-info/PKG-INFO
+[1.436s] writing dependency_links to ../../build/eurobot_cositas/eurobot_cositas.egg-info/dependency_links.txt
+[1.437s] writing entry points to ../../build/eurobot_cositas/eurobot_cositas.egg-info/entry_points.txt
+[1.437s] writing requirements to ../../build/eurobot_cositas/eurobot_cositas.egg-info/requires.txt
+[1.437s] writing top-level names to ../../build/eurobot_cositas/eurobot_cositas.egg-info/top_level.txt
+[1.477s] reading manifest file '../../build/eurobot_cositas/eurobot_cositas.egg-info/SOURCES.txt'
+[1.478s] writing manifest file '../../build/eurobot_cositas/eurobot_cositas.egg-info/SOURCES.txt'
+[1.479s] running build
+[1.479s] running build_py
+[1.479s] copying eurobot_cositas/vision_navigation.py -> /home/wormi/sprint4/v6/g06_prii3_wsv2/build/eurobot_cositas/build/lib/eurobot_cositas
+[1.479s] running install
+[1.480s] running install_lib
+[1.481s] copying /home/wormi/sprint4/v6/g06_prii3_wsv2/build/eurobot_cositas/build/lib/eurobot_cositas/vision_navigation.py -> /home/wormi/sprint4/v6/g06_prii3_wsv2/install/eurobot_cositas/lib/python3.8/site-packages/eurobot_cositas
+[1.482s] byte-compiling /home/wormi/sprint4/v6/g06_prii3_wsv2/install/eurobot_cositas/lib/python3.8/site-packages/eurobot_cositas/vision_navigation.py to vision_navigation.cpython-38.pyc
+[1.485s] running install_data
+[1.485s] running install_egg_info
+[1.487s] removing '/home/wormi/sprint4/v6/g06_prii3_wsv2/install/eurobot_cositas/lib/python3.8/site-packages/eurobot_cositas-0.0.0-py3.8.egg-info' (and everything under it)
+[1.487s] Copying ../../build/eurobot_cositas/eurobot_cositas.egg-info to /home/wormi/sprint4/v6/g06_prii3_wsv2/install/eurobot_cositas/lib/python3.8/site-packages/eurobot_cositas-0.0.0-py3.8.egg-info
+[1.488s] running install_scripts
+[1.508s] Installing aruco_detector_cositas.py script to /home/wormi/sprint4/v6/g06_prii3_wsv2/install/eurobot_cositas/lib/eurobot_cositas
+[1.508s] Installing vision_navigation.py script to /home/wormi/sprint4/v6/g06_prii3_wsv2/install/eurobot_cositas/lib/eurobot_cositas
+[1.508s] writing list of installed files to '/home/wormi/sprint4/v6/g06_prii3_wsv2/build/eurobot_cositas/install.log'
+[1.535s] Invoked command in '/home/wormi/sprint4/v6/g06_prii3_wsv2/src/eurobot_cositas' returned '0': PYTHONPATH=/home/wormi/sprint4/v6/g06_prii3_wsv2/build/eurobot_cositas/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/wormi/sprint4/v6/g06_prii3_wsv2/install/eurobot_cositas/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/eurobot_cositas build --build-base /home/wormi/sprint4/v6/g06_prii3_wsv2/build/eurobot_cositas/build install --record /home/wormi/sprint4/v6/g06_prii3_wsv2/build/eurobot_cositas/install.log --install-scripts $base/lib/eurobot_cositas --single-version-externally-managed install_data
