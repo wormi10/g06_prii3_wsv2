@@ -1,0 +1,20 @@
+# Archivo de configuración para el navegador de ArUco
+# Ajusta estos valores según tu configuración
+
+aruco_navigator:
+  ros__parameters:
+    # Resolución de la cámara en píxeles
+    camera_resolution_x: 1280
+    camera_resolution_y: 720
+    
+    # Dimensiones reales del área de trabajo en metros
+    # IMPORTANTE: Medir el área real que cubre la cámara
+    real_world_width: 2.0   # Ancho en metros
+    real_world_height: 1.5  # Alto en metros
+    
+    # Tolerancia para considerar que se alcanzó el objetivo (en metros)
+    goal_tolerance: 0.15
+    
+    # Velocidades máximas del robot
+    linear_speed_max: 0.5   # m/s
+    angular_speed_max: 1.0  # rad/s

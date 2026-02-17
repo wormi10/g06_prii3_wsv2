@@ -1,0 +1,26 @@
+running egg_info
+writing ../build/sprint5_v2/sprint5_v2.egg-info/PKG-INFO
+writing dependency_links to ../build/sprint5_v2/sprint5_v2.egg-info/dependency_links.txt
+writing entry points to ../build/sprint5_v2/sprint5_v2.egg-info/entry_points.txt
+writing requirements to ../build/sprint5_v2/sprint5_v2.egg-info/requires.txt
+writing top-level names to ../build/sprint5_v2/sprint5_v2.egg-info/top_level.txt
+reading manifest file '../build/sprint5_v2/sprint5_v2.egg-info/SOURCES.txt'
+writing manifest file '../build/sprint5_v2/sprint5_v2.egg-info/SOURCES.txt'
+running build
+running build_py
+running install
+running install_lib
+running install_data
+copying package.xml -> /home/wormi/sprint5/v2/install/sprint5_v2/share/sprint5_v2
+creating /home/wormi/sprint5/v2/install/sprint5_v2/share/sprint5_v2/launch
+copying launch/aruco_navigation_launch.py -> /home/wormi/sprint5/v2/install/sprint5_v2/share/sprint5_v2/launch
+creating /home/wormi/sprint5/v2/install/sprint5_v2/share/sprint5_v2/config
+copying config/aruco_nav_params.yaml -> /home/wormi/sprint5/v2/install/sprint5_v2/share/sprint5_v2/config
+running install_egg_info
+Copying ../build/sprint5_v2/sprint5_v2.egg-info to /home/wormi/sprint5/v2/install/sprint5_v2/lib/python3.8/site-packages/sprint5_v2-0.0.1-py3.8.egg-info
+running install_scripts
+Installing aruco_navigator script to /home/wormi/sprint5/v2/install/sprint5_v2/lib/sprint5_v2
+Installing calibration_helper script to /home/wormi/sprint5/v2/install/sprint5_v2/lib/sprint5_v2
+Installing subcriptor script to /home/wormi/sprint5/v2/install/sprint5_v2/lib/sprint5_v2
+Installing system_tester script to /home/wormi/sprint5/v2/install/sprint5_v2/lib/sprint5_v2
+writing list of installed files to '/home/wormi/sprint5/v2/build/sprint5_v2/install.log'

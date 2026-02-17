@@ -1,0 +1,25 @@
+running egg_info
+writing ../build/sprint5_v2/sprint5_v2.egg-info/PKG-INFO
+writing dependency_links to ../build/sprint5_v2/sprint5_v2.egg-info/dependency_links.txt
+writing entry points to ../build/sprint5_v2/sprint5_v2.egg-info/entry_points.txt
+writing requirements to ../build/sprint5_v2/sprint5_v2.egg-info/requires.txt
+writing top-level names to ../build/sprint5_v2/sprint5_v2.egg-info/top_level.txt
+reading manifest file '../build/sprint5_v2/sprint5_v2.egg-info/SOURCES.txt'
+writing manifest file '../build/sprint5_v2/sprint5_v2.egg-info/SOURCES.txt'
+running build
+running build_py
+copying sprint5_v2/system_tester.py -> /home/wormi/sprint5/v2/build/sprint5_v2/build/lib/sprint5_v2
+running install
+running install_lib
+copying /home/wormi/sprint5/v2/build/sprint5_v2/build/lib/sprint5_v2/system_tester.py -> /home/wormi/sprint5/v2/install/sprint5_v2/lib/python3.8/site-packages/sprint5_v2
+byte-compiling /home/wormi/sprint5/v2/install/sprint5_v2/lib/python3.8/site-packages/sprint5_v2/system_tester.py to system_tester.cpython-38.pyc
+running install_data
+running install_egg_info
+removing '/home/wormi/sprint5/v2/install/sprint5_v2/lib/python3.8/site-packages/sprint5_v2-0.0.0-py3.8.egg-info' (and everything under it)
+Copying ../build/sprint5_v2/sprint5_v2.egg-info to /home/wormi/sprint5/v2/install/sprint5_v2/lib/python3.8/site-packages/sprint5_v2-0.0.0-py3.8.egg-info
+running install_scripts
+Installing aruco_navigator script to /home/wormi/sprint5/v2/install/sprint5_v2/lib/sprint5_v2
+Installing calibration_helper script to /home/wormi/sprint5/v2/install/sprint5_v2/lib/sprint5_v2
+Installing subcriptor script to /home/wormi/sprint5/v2/install/sprint5_v2/lib/sprint5_v2
+Installing system_tester script to /home/wormi/sprint5/v2/install/sprint5_v2/lib/sprint5_v2
+writing list of installed files to '/home/wormi/sprint5/v2/build/sprint5_v2/install.log'

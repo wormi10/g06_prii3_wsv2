@@ -1,0 +1,61 @@
+[0.000000] (-) TimerEvent: {}
+[0.000748] (sprint5_v2) JobQueued: {'identifier': 'sprint5_v2', 'dependencies': OrderedDict()}
+[0.000821] (sprint5_v2) JobStarted: {'identifier': 'sprint5_v2'}
+[0.099150] (-) TimerEvent: {}
+[0.199663] (-) TimerEvent: {}
+[0.300077] (-) TimerEvent: {}
+[0.400512] (-) TimerEvent: {}
+[0.500975] (-) TimerEvent: {}
+[0.601333] (-) TimerEvent: {}
+[0.701651] (-) TimerEvent: {}
+[0.801956] (-) TimerEvent: {}
+[0.842884] (sprint5_v2) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', '-W', 'ignore:easy_install command is deprecated', 'setup.py', 'egg_info', '--egg-base', '../build/sprint5_v2', 'build', '--build-base', '/home/wormi/sprint5/v2/build/sprint5_v2/build', 'install', '--record', '/home/wormi/sprint5/v2/build/sprint5_v2/install.log', '--install-scripts', '$base/lib/sprint5_v2', '--single-version-externally-managed', 'install_data'], 'cwd': '/home/wormi/sprint5/v2/sprint5_1', 'env': {'GJS_DEBUG_TOPICS': 'JS ERROR;JS LOG', 'LESSOPEN': '| /usr/bin/lesspipe %s', 'LANGUAGE': 'es:en', 'USER': 'wormi', 'LC_TIME': 'en_US.UTF-8', 'SSH_AGENT_PID': '1411', 'XDG_SESSION_TYPE': 'x11', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib', 'HOME': '/home/wormi', 'OLDPWD': '/home/wormi', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'LC_MONETARY': 'en_US.UTF-8', 'MANAGERPID': '1298', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'IM_CONFIG_PHASE': '1', 'ROS_DISTRO': 'foxy', 'LOGNAME': 'wormi', 'JOURNAL_STREAM': '8:39554', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'wormi', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'ROS_LOCALHOST_ONLY': '0', 'WINDOWPATH': '2', 'PATH': '/opt/ros/foxy/bin:/home/wormi/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'SESSION_MANAGER': 'local/wormi-Katana-GF66-11UD:@/tmp/.ICE-unix/1449,unix/wormi-Katana-GF66-11UD:/tmp/.ICE-unix/1449', 'INVOCATION_ID': '80eb7b2f24dc4b80bfe3105c067ff071', 'PAPERSIZE': 'letter', 'XDG_MENU_PREFIX': 'gnome-', 'LC_ADDRESS': 'en_US.UTF-8', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/1f81ce67_c50a_40f4_9053_9ef9fd5e8662', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':0', 'LANG': 'es_ES.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'LC_TELEPHONE': 'en_US.UTF-8', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/gdm/Xauthority', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'GNOME_TERMINAL_SERVICE': ':1.82', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'ROS_DOMAIN_ID': '1', 'AMENT_PREFIX_PATH': '/opt/ros/foxy', 'SHELL': '/bin/bash', 'LC_NAME': 'en_US.UTF-8', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'LC_MEASUREMENT': 'en_US.UTF-8', 'GPG_AGENT_INFO': '/run/user/1000/gnupg/S.gpg-agent:0:1', 'GJS_DEBUG_OUTPUT': 'stderr', 'LC_IDENTIFICATION': 'en_US.UTF-8', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/wormi/sprint5/v2/build/sprint5_v2', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/wormi/sprint5/v2/build/sprint5_v2/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/wormi/sprint5/v2/install/sprint5_v2/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages', 'LC_NUMERIC': 'en_US.UTF-8', 'LC_PAPER': 'en_US.UTF-8', 'COLCON': '1', 'VTE_VERSION': '6003'}, 'shell': False}
+[0.902158] (-) TimerEvent: {}
+[1.002551] (-) TimerEvent: {}
+[1.102916] (-) TimerEvent: {}
+[1.128905] (sprint5_v2) StdoutLine: {'line': b'running egg_info\n'}
+[1.129513] (sprint5_v2) StdoutLine: {'line': b'creating ../build/sprint5_v2/sprint5_v2.egg-info\n'}
+[1.129763] (sprint5_v2) StdoutLine: {'line': b'writing ../build/sprint5_v2/sprint5_v2.egg-info/PKG-INFO\n'}
+[1.130044] (sprint5_v2) StdoutLine: {'line': b'writing dependency_links to ../build/sprint5_v2/sprint5_v2.egg-info/dependency_links.txt\n'}
+[1.130301] (sprint5_v2) StdoutLine: {'line': b'writing entry points to ../build/sprint5_v2/sprint5_v2.egg-info/entry_points.txt\n'}
+[1.130382] (sprint5_v2) StdoutLine: {'line': b'writing requirements to ../build/sprint5_v2/sprint5_v2.egg-info/requires.txt\n'}
+[1.130450] (sprint5_v2) StdoutLine: {'line': b'writing top-level names to ../build/sprint5_v2/sprint5_v2.egg-info/top_level.txt\n'}
+[1.131761] (sprint5_v2) StdoutLine: {'line': b"writing manifest file '../build/sprint5_v2/sprint5_v2.egg-info/SOURCES.txt'\n"}
+[1.172175] (sprint5_v2) StdoutLine: {'line': b"reading manifest file '../build/sprint5_v2/sprint5_v2.egg-info/SOURCES.txt'\n"}
+[1.172990] (sprint5_v2) StdoutLine: {'line': b"writing manifest file '../build/sprint5_v2/sprint5_v2.egg-info/SOURCES.txt'\n"}
+[1.173166] (sprint5_v2) StdoutLine: {'line': b'running build\n'}
+[1.173250] (sprint5_v2) StdoutLine: {'line': b'running build_py\n'}
+[1.173382] (sprint5_v2) StdoutLine: {'line': b'creating /home/wormi/sprint5/v2/build/sprint5_v2/build\n'}
+[1.173476] (sprint5_v2) StdoutLine: {'line': b'creating /home/wormi/sprint5/v2/build/sprint5_v2/build/lib\n'}
+[1.173547] (sprint5_v2) StdoutLine: {'line': b'creating /home/wormi/sprint5/v2/build/sprint5_v2/build/lib/sprint5_v2\n'}
+[1.173618] (sprint5_v2) StdoutLine: {'line': b'copying sprint5_v2/calibration_helper.py -> /home/wormi/sprint5/v2/build/sprint5_v2/build/lib/sprint5_v2\n'}
+[1.173687] (sprint5_v2) StdoutLine: {'line': b'copying sprint5_v2/aruco_navigator.py -> /home/wormi/sprint5/v2/build/sprint5_v2/build/lib/sprint5_v2\n'}
+[1.173812] (sprint5_v2) StdoutLine: {'line': b'copying sprint5_v2/subcriptor.py -> /home/wormi/sprint5/v2/build/sprint5_v2/build/lib/sprint5_v2\n'}
+[1.173910] (sprint5_v2) StdoutLine: {'line': b'copying sprint5_v2/__init__.py -> /home/wormi/sprint5/v2/build/sprint5_v2/build/lib/sprint5_v2\n'}
+[1.173974] (sprint5_v2) StdoutLine: {'line': b'running install\n'}
+[1.174828] (sprint5_v2) StdoutLine: {'line': b'running install_lib\n'}
+[1.175954] (sprint5_v2) StdoutLine: {'line': b'creating /home/wormi/sprint5/v2/install/sprint5_v2/lib/python3.8/site-packages/sprint5_v2\n'}
+[1.176161] (sprint5_v2) StdoutLine: {'line': b'copying /home/wormi/sprint5/v2/build/sprint5_v2/build/lib/sprint5_v2/calibration_helper.py -> /home/wormi/sprint5/v2/install/sprint5_v2/lib/python3.8/site-packages/sprint5_v2\n'}
+[1.176260] (sprint5_v2) StdoutLine: {'line': b'copying /home/wormi/sprint5/v2/build/sprint5_v2/build/lib/sprint5_v2/aruco_navigator.py -> /home/wormi/sprint5/v2/install/sprint5_v2/lib/python3.8/site-packages/sprint5_v2\n'}
+[1.176384] (sprint5_v2) StdoutLine: {'line': b'copying /home/wormi/sprint5/v2/build/sprint5_v2/build/lib/sprint5_v2/subcriptor.py -> /home/wormi/sprint5/v2/install/sprint5_v2/lib/python3.8/site-packages/sprint5_v2\n'}
+[1.176454] (sprint5_v2) StdoutLine: {'line': b'copying /home/wormi/sprint5/v2/build/sprint5_v2/build/lib/sprint5_v2/__init__.py -> /home/wormi/sprint5/v2/install/sprint5_v2/lib/python3.8/site-packages/sprint5_v2\n'}
+[1.176809] (sprint5_v2) StdoutLine: {'line': b'byte-compiling /home/wormi/sprint5/v2/install/sprint5_v2/lib/python3.8/site-packages/sprint5_v2/calibration_helper.py to calibration_helper.cpython-38.pyc\n'}
+[1.179557] (sprint5_v2) StdoutLine: {'line': b'byte-compiling /home/wormi/sprint5/v2/install/sprint5_v2/lib/python3.8/site-packages/sprint5_v2/aruco_navigator.py to aruco_navigator.cpython-38.pyc\n'}
+[1.181154] (sprint5_v2) StdoutLine: {'line': b'byte-compiling /home/wormi/sprint5/v2/install/sprint5_v2/lib/python3.8/site-packages/sprint5_v2/subcriptor.py to subcriptor.cpython-38.pyc\n'}
+[1.182638] (sprint5_v2) StdoutLine: {'line': b'byte-compiling /home/wormi/sprint5/v2/install/sprint5_v2/lib/python3.8/site-packages/sprint5_v2/__init__.py to __init__.cpython-38.pyc\n'}
+[1.182919] (sprint5_v2) StdoutLine: {'line': b'running install_data\n'}
+[1.183021] (sprint5_v2) StdoutLine: {'line': b'creating /home/wormi/sprint5/v2/install/sprint5_v2/share\n'}
+[1.183104] (sprint5_v2) StdoutLine: {'line': b'creating /home/wormi/sprint5/v2/install/sprint5_v2/share/ament_index\n'}
+[1.183260] (sprint5_v2) StdoutLine: {'line': b'creating /home/wormi/sprint5/v2/install/sprint5_v2/share/ament_index/resource_index\n'}
+[1.183364] (sprint5_v2) StdoutLine: {'line': b'creating /home/wormi/sprint5/v2/install/sprint5_v2/share/ament_index/resource_index/packages\n'}
+[1.183431] (sprint5_v2) StdoutLine: {'line': b'copying resource/sprint5_v2 -> /home/wormi/sprint5/v2/install/sprint5_v2/share/ament_index/resource_index/packages\n'}
+[1.183508] (sprint5_v2) StdoutLine: {'line': b'creating /home/wormi/sprint5/v2/install/sprint5_v2/share/sprint5_v2\n'}
+[1.183578] (sprint5_v2) StdoutLine: {'line': b'copying package.xml -> /home/wormi/sprint5/v2/install/sprint5_v2/share/sprint5_v2\n'}
+[1.183641] (sprint5_v2) StdoutLine: {'line': b'running install_egg_info\n'}
+[1.185294] (sprint5_v2) StdoutLine: {'line': b'Copying ../build/sprint5_v2/sprint5_v2.egg-info to /home/wormi/sprint5/v2/install/sprint5_v2/lib/python3.8/site-packages/sprint5_v2-0.0.0-py3.8.egg-info\n'}
+[1.186059] (sprint5_v2) StdoutLine: {'line': b'running install_scripts\n'}
+[1.203021] (-) TimerEvent: {}
+[1.206767] (sprint5_v2) StdoutLine: {'line': b"writing list of installed files to '/home/wormi/sprint5/v2/build/sprint5_v2/install.log'\n"}
+[1.233389] (sprint5_v2) CommandEnded: {'returncode': 0}
+[1.247262] (sprint5_v2) JobEnded: {'identifier': 'sprint5_v2', 'rc': 0}
+[1.248175] (-) EventReactorShutdown: {}

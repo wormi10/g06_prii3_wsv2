@@ -1,0 +1,6 @@
+[console_scripts]
+aruco_navigator = sprint5_v2.aruco_navigator:main
+calibration_helper = sprint5_v2.calibration_helper:main
+subcriptor = sprint5_v2.subcriptor:main
+system_tester = sprint5_v2.system_tester:main
+

@@ -1,0 +1,28 @@
+[0.866s] Invoking command in '/home/wormi/sprint5/v2/sprint5_1': PYTHONPATH=/home/wormi/sprint5/v2/build/sprint5_v2/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/wormi/sprint5/v2/install/sprint5_v2/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../build/sprint5_v2 build --build-base /home/wormi/sprint5/v2/build/sprint5_v2/build install --record /home/wormi/sprint5/v2/build/sprint5_v2/install.log --install-scripts $base/lib/sprint5_v2 --single-version-externally-managed install_data
+[1.149s] running egg_info
+[1.150s] writing ../build/sprint5_v2/sprint5_v2.egg-info/PKG-INFO
+[1.150s] writing dependency_links to ../build/sprint5_v2/sprint5_v2.egg-info/dependency_links.txt
+[1.150s] writing entry points to ../build/sprint5_v2/sprint5_v2.egg-info/entry_points.txt
+[1.150s] writing requirements to ../build/sprint5_v2/sprint5_v2.egg-info/requires.txt
+[1.151s] writing top-level names to ../build/sprint5_v2/sprint5_v2.egg-info/top_level.txt
+[1.193s] reading manifest file '../build/sprint5_v2/sprint5_v2.egg-info/SOURCES.txt'
+[1.194s] writing manifest file '../build/sprint5_v2/sprint5_v2.egg-info/SOURCES.txt'
+[1.194s] running build
+[1.194s] running build_py
+[1.194s] running install
+[1.195s] running install_lib
+[1.197s] running install_data
+[1.197s] copying package.xml -> /home/wormi/sprint5/v2/install/sprint5_v2/share/sprint5_v2
+[1.197s] creating /home/wormi/sprint5/v2/install/sprint5_v2/share/sprint5_v2/launch
+[1.198s] copying launch/aruco_navigation_launch.py -> /home/wormi/sprint5/v2/install/sprint5_v2/share/sprint5_v2/launch
+[1.198s] creating /home/wormi/sprint5/v2/install/sprint5_v2/share/sprint5_v2/config
+[1.198s] copying config/aruco_nav_params.yaml -> /home/wormi/sprint5/v2/install/sprint5_v2/share/sprint5_v2/config
+[1.198s] running install_egg_info
+[1.200s] Copying ../build/sprint5_v2/sprint5_v2.egg-info to /home/wormi/sprint5/v2/install/sprint5_v2/lib/python3.8/site-packages/sprint5_v2-0.0.1-py3.8.egg-info
+[1.201s] running install_scripts
+[1.222s] Installing aruco_navigator script to /home/wormi/sprint5/v2/install/sprint5_v2/lib/sprint5_v2
+[1.222s] Installing calibration_helper script to /home/wormi/sprint5/v2/install/sprint5_v2/lib/sprint5_v2
+[1.222s] Installing subcriptor script to /home/wormi/sprint5/v2/install/sprint5_v2/lib/sprint5_v2
+[1.222s] Installing system_tester script to /home/wormi/sprint5/v2/install/sprint5_v2/lib/sprint5_v2
+[1.222s] writing list of installed files to '/home/wormi/sprint5/v2/build/sprint5_v2/install.log'
+[1.250s] Invoked command in '/home/wormi/sprint5/v2/sprint5_1' returned '0': PYTHONPATH=/home/wormi/sprint5/v2/build/sprint5_v2/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/wormi/sprint5/v2/install/sprint5_v2/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../build/sprint5_v2 build --build-base /home/wormi/sprint5/v2/build/sprint5_v2/build install --record /home/wormi/sprint5/v2/build/sprint5_v2/install.log --install-scripts $base/lib/sprint5_v2 --single-version-externally-managed install_data
