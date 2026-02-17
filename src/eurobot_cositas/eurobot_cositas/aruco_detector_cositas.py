@@ -115,7 +115,7 @@ class TemplateDetectorNode(Node):
         
         # Calcular márgenes
         margin_x = int(w * self.roi_margin)
-        margin_y = int(h * self.roi_margin)
+        margin_y = int(h * self.roi_margin * 2)
         
         # Crear máscara (región central = blanco, lados = negro)
         mask = np.zeros((h, w), dtype=np.uint8)

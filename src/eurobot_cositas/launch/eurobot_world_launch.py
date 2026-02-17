@@ -26,14 +26,7 @@ def generate_launch_description():
 
     pkg_gazebo_ros = get_package_share_directory('gazebo_ros')
 
-    # ---------- ArUco TABLE detector (PBI 4.2 â€“ table) ----------
-    aruco_table_node = Node(
-        package='aruco_detector_pkg',
-        executable='aruco_detector',
-        name='aruco_table_detector',
-        output='screen',
-        parameters=[{'use_sim_time': True}]
-    )
+   
 
     # ---------- ArUco ROBOT detector (PBI 4.2 â€“ robot) ----------
     aruco_robot_node = Node(
@@ -42,6 +35,22 @@ def generate_launch_description():
         name='aruco_detector_cositas',
         output='screen',
         parameters=[{'use_sim_time': True}]
+    )
+    # ---------- ArUco
+    aruco_detector_node = Node(
+        package='eurobot_cositas',
+        executable='aruco_detector_cositas',
+        name='aruco_detector',
+        output='screen',
+        parameters=[{'use_sim_time': False}]
+    )
+    # ---------- ArUco
+    vision_navigation_node = Node(
+        package='eurobot_cositas',
+        executable='vision_navigation',
+        name='movimiento_JetBot',
+        output='screen',
+        parameters=[{'use_sim_time': False}]
     )
 
     return LaunchDescription([
@@ -80,9 +89,11 @@ def generate_launch_description():
             ),
         ),
 
+        
         # ---------- ArUco table detector ----------
-        aruco_table_node,
+        
 
-        # ---------- ArUco robot detector ----------
-        aruco_robot_node,
+        aruco_detector_node,
+
+        vision_navigation_node
     ])
