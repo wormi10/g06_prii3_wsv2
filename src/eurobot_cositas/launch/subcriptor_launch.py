@@ -22,12 +22,12 @@ def generate_launch_description():
     )
 
     # Reproducción del rosbag en bucle
-    rosbag_play = ExecuteProcess(
+    '''rosbag_play = ExecuteProcess(
         cmd=['ros2', 'bag', 'play', rosbag_dir, '--loop'],
         output='screen',
     )
-
+'''
     return LaunchDescription([
-        rosbag_play,
+      #  rosbag_play,
         subcriptor_node,
     ])

@@ -1,0 +1,439 @@
+[0.124s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build']
+[0.124s] DEBUG:colcon:Parsed command line arguments: Namespace(allow_overriding=[], ament_cmake_args=None, base_paths=['.'], build_base='build', catkin_cmake_args=None, catkin_skip_building_tests=False, cmake_args=None, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, cmake_target=None, cmake_target_skip_unavailable=False, continue_on_error=False, event_handlers=None, executor='parallel', ignore_user_meta=False, install_base='install', log_base=None, log_level=None, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7f715dffde50>>, merge_install=False, metas=['./colcon.meta'], mixin=None, mixin_files=None, mixin_verb=('build',), packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_end=None, packages_ignore=None, packages_ignore_regex=None, packages_select=None, packages_select_build_failed=False, packages_select_by_dep=None, packages_select_regex=None, packages_select_test_failures=False, packages_skip=None, packages_skip_build_finished=False, packages_skip_by_dep=None, packages_skip_regex=None, packages_skip_test_passed=False, packages_skip_up_to=None, packages_start=None, packages_up_to=None, packages_up_to_regex=None, parallel_workers=12, paths=None, symlink_install=False, test_result_base=None, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7f715dffde50>, verb_name='build', verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0x7f715df52850>)
+[0.221s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.221s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.221s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.221s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.221s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.221s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.221s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/pavlo/v10/g06_prii3_wsv2'
+[0.221s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.221s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.221s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.221s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.221s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.221s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.221s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.221s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.222s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.228s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.228s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.228s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.228s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.228s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.228s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.228s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.228s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.228s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.229s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.229s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.229s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.229s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.229s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.229s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[0.229s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[0.229s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[0.229s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[0.229s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[0.229s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[0.229s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[0.229s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[0.229s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[0.229s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['cmake', 'python']
+[0.229s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[0.229s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[0.229s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[0.229s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[0.229s] Level 1:colcon.colcon_core.package_identification:_identify(src/aruco_detector_pkg) by extensions ['ignore', 'ignore_ament_install']
+[0.229s] Level 1:colcon.colcon_core.package_identification:_identify(src/aruco_detector_pkg) by extension 'ignore'
+[0.229s] Level 1:colcon.colcon_core.package_identification:_identify(src/aruco_detector_pkg) by extension 'ignore_ament_install'
+[0.229s] Level 1:colcon.colcon_core.package_identification:_identify(src/aruco_detector_pkg) by extensions ['colcon_pkg']
+[0.229s] Level 1:colcon.colcon_core.package_identification:_identify(src/aruco_detector_pkg) by extension 'colcon_pkg'
+[0.229s] Level 1:colcon.colcon_core.package_identification:_identify(src/aruco_detector_pkg) by extensions ['colcon_meta']
+[0.229s] Level 1:colcon.colcon_core.package_identification:_identify(src/aruco_detector_pkg) by extension 'colcon_meta'
+[0.229s] Level 1:colcon.colcon_core.package_identification:_identify(src/aruco_detector_pkg) by extensions ['ros']
+[0.229s] Level 1:colcon.colcon_core.package_identification:_identify(src/aruco_detector_pkg) by extension 'ros'
+[0.231s] DEBUG:colcon.colcon_core.package_identification:Package 'src/aruco_detector_pkg' with type 'ros.ament_python' and name 'aruco_detector_pkg'
+[0.231s] Level 1:colcon.colcon_core.package_identification:_identify(src/camara_god) by extensions ['ignore', 'ignore_ament_install']
+[0.231s] Level 1:colcon.colcon_core.package_identification:_identify(src/camara_god) by extension 'ignore'
+[0.231s] Level 1:colcon.colcon_core.package_identification:_identify(src/camara_god) by extension 'ignore_ament_install'
+[0.231s] Level 1:colcon.colcon_core.package_identification:_identify(src/camara_god) by extensions ['colcon_pkg']
+[0.231s] Level 1:colcon.colcon_core.package_identification:_identify(src/camara_god) by extension 'colcon_pkg'
+[0.231s] Level 1:colcon.colcon_core.package_identification:_identify(src/camara_god) by extensions ['colcon_meta']
+[0.231s] Level 1:colcon.colcon_core.package_identification:_identify(src/camara_god) by extension 'colcon_meta'
+[0.231s] Level 1:colcon.colcon_core.package_identification:_identify(src/camara_god) by extensions ['ros']
+[0.231s] Level 1:colcon.colcon_core.package_identification:_identify(src/camara_god) by extension 'ros'
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(src/camara_god) by extensions ['cmake', 'python']
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(src/camara_god) by extension 'cmake'
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(src/camara_god) by extension 'python'
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(src/camara_god) by extensions ['python_setup_py']
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(src/camara_god) by extension 'python_setup_py'
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(src/camara_god/build) by extensions ['ignore', 'ignore_ament_install']
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(src/camara_god/build) by extension 'ignore'
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(src/camara_god/build) ignored
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(src/camara_god/install) by extensions ['ignore', 'ignore_ament_install']
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(src/camara_god/install) by extension 'ignore'
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(src/camara_god/install) ignored
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(src/camara_god/log) by extensions ['ignore', 'ignore_ament_install']
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(src/camara_god/log) by extension 'ignore'
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(src/camara_god/log) ignored
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(src/camara_god/sprint5_1) by extensions ['ignore', 'ignore_ament_install']
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(src/camara_god/sprint5_1) by extension 'ignore'
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(src/camara_god/sprint5_1) by extension 'ignore_ament_install'
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(src/camara_god/sprint5_1) by extensions ['colcon_pkg']
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(src/camara_god/sprint5_1) by extension 'colcon_pkg'
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(src/camara_god/sprint5_1) by extensions ['colcon_meta']
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(src/camara_god/sprint5_1) by extension 'colcon_meta'
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(src/camara_god/sprint5_1) by extensions ['ros']
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(src/camara_god/sprint5_1) by extension 'ros'
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(src/camara_god/sprint5_1) by extensions ['cmake', 'python']
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(src/camara_god/sprint5_1) by extension 'cmake'
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(src/camara_god/sprint5_1) by extension 'python'
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(src/camara_god/sprint5_1) by extensions ['python_setup_py']
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(src/camara_god/sprint5_1) by extension 'python_setup_py'
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(src/eurobot_cositas) by extensions ['ignore', 'ignore_ament_install']
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(src/eurobot_cositas) by extension 'ignore'
+[0.233s] Level 1:colcon.colcon_core.package_identification:_identify(src/eurobot_cositas) by extension 'ignore_ament_install'
+[0.233s] Level 1:colcon.colcon_core.package_identification:_identify(src/eurobot_cositas) by extensions ['colcon_pkg']
+[0.233s] Level 1:colcon.colcon_core.package_identification:_identify(src/eurobot_cositas) by extension 'colcon_pkg'
+[0.233s] Level 1:colcon.colcon_core.package_identification:_identify(src/eurobot_cositas) by extensions ['colcon_meta']
+[0.233s] Level 1:colcon.colcon_core.package_identification:_identify(src/eurobot_cositas) by extension 'colcon_meta'
+[0.233s] Level 1:colcon.colcon_core.package_identification:_identify(src/eurobot_cositas) by extensions ['ros']
+[0.233s] Level 1:colcon.colcon_core.package_identification:_identify(src/eurobot_cositas) by extension 'ros'
+[0.233s] DEBUG:colcon.colcon_core.package_identification:Package 'src/eurobot_cositas' with type 'ros.ament_python' and name 'eurobot_cositas'
+[0.233s] Level 1:colcon.colcon_core.package_identification:_identify(src/rosbag) by extensions ['ignore', 'ignore_ament_install']
+[0.233s] Level 1:colcon.colcon_core.package_identification:_identify(src/rosbag) by extension 'ignore'
+[0.233s] Level 1:colcon.colcon_core.package_identification:_identify(src/rosbag) by extension 'ignore_ament_install'
+[0.233s] Level 1:colcon.colcon_core.package_identification:_identify(src/rosbag) by extensions ['colcon_pkg']
+[0.233s] Level 1:colcon.colcon_core.package_identification:_identify(src/rosbag) by extension 'colcon_pkg'
+[0.233s] Level 1:colcon.colcon_core.package_identification:_identify(src/rosbag) by extensions ['colcon_meta']
+[0.233s] Level 1:colcon.colcon_core.package_identification:_identify(src/rosbag) by extension 'colcon_meta'
+[0.233s] Level 1:colcon.colcon_core.package_identification:_identify(src/rosbag) by extensions ['ros']
+[0.233s] Level 1:colcon.colcon_core.package_identification:_identify(src/rosbag) by extension 'ros'
+[0.233s] Level 1:colcon.colcon_core.package_identification:_identify(src/rosbag) by extensions ['cmake', 'python']
+[0.233s] Level 1:colcon.colcon_core.package_identification:_identify(src/rosbag) by extension 'cmake'
+[0.233s] Level 1:colcon.colcon_core.package_identification:_identify(src/rosbag) by extension 'python'
+[0.233s] Level 1:colcon.colcon_core.package_identification:_identify(src/rosbag) by extensions ['python_setup_py']
+[0.233s] Level 1:colcon.colcon_core.package_identification:_identify(src/rosbag) by extension 'python_setup_py'
+[0.233s] Level 1:colcon.colcon_core.package_identification:_identify(world) by extensions ['ignore', 'ignore_ament_install']
+[0.233s] Level 1:colcon.colcon_core.package_identification:_identify(world) by extension 'ignore'
+[0.233s] Level 1:colcon.colcon_core.package_identification:_identify(world) by extension 'ignore_ament_install'
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(world) by extensions ['colcon_pkg']
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(world) by extension 'colcon_pkg'
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(world) by extensions ['colcon_meta']
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(world) by extension 'colcon_meta'
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(world) by extensions ['ros']
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(world) by extension 'ros'
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(world) by extensions ['cmake', 'python']
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(world) by extension 'cmake'
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(world) by extension 'python'
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(world) by extensions ['python_setup_py']
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(world) by extension 'python_setup_py'
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(world/models) by extensions ['ignore', 'ignore_ament_install']
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(world/models) by extension 'ignore'
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(world/models) by extension 'ignore_ament_install'
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(world/models) by extensions ['colcon_pkg']
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(world/models) by extension 'colcon_pkg'
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(world/models) by extensions ['colcon_meta']
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(world/models) by extension 'colcon_meta'
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(world/models) by extensions ['ros']
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(world/models) by extension 'ros'
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(world/models) by extensions ['cmake', 'python']
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(world/models) by extension 'cmake'
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(world/models) by extension 'python'
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(world/models) by extensions ['python_setup_py']
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(world/models) by extension 'python_setup_py'
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/eurobot_cositas) by extensions ['ignore', 'ignore_ament_install']
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/eurobot_cositas) by extension 'ignore'
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/eurobot_cositas) by extension 'ignore_ament_install'
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/eurobot_cositas) by extensions ['colcon_pkg']
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/eurobot_cositas) by extension 'colcon_pkg'
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/eurobot_cositas) by extensions ['colcon_meta']
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/eurobot_cositas) by extension 'colcon_meta'
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/eurobot_cositas) by extensions ['ros']
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/eurobot_cositas) by extension 'ros'
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/eurobot_cositas) by extensions ['cmake', 'python']
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/eurobot_cositas) by extension 'cmake'
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/eurobot_cositas) by extension 'python'
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/eurobot_cositas) by extensions ['python_setup_py']
+[0.235s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/eurobot_cositas) by extension 'python_setup_py'
+[0.235s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker10) by extensions ['ignore', 'ignore_ament_install']
+[0.235s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker10) by extension 'ignore'
+[0.235s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker10) by extension 'ignore_ament_install'
+[0.235s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker10) by extensions ['colcon_pkg']
+[0.235s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker10) by extension 'colcon_pkg'
+[0.235s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker10) by extensions ['colcon_meta']
+[0.235s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker10) by extension 'colcon_meta'
+[0.235s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker10) by extensions ['ros']
+[0.235s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker10) by extension 'ros'
+[0.235s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker10) by extensions ['cmake', 'python']
+[0.235s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker10) by extension 'cmake'
+[0.235s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker10) by extension 'python'
+[0.235s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker10) by extensions ['python_setup_py']
+[0.235s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker10) by extension 'python_setup_py'
+[0.235s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker10/materials) by extensions ['ignore', 'ignore_ament_install']
+[0.235s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker10/materials) by extension 'ignore'
+[0.235s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker10/materials) by extension 'ignore_ament_install'
+[0.235s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker10/materials) by extensions ['colcon_pkg']
+[0.235s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker10/materials) by extension 'colcon_pkg'
+[0.235s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker10/materials) by extensions ['colcon_meta']
+[0.235s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker10/materials) by extension 'colcon_meta'
+[0.235s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker10/materials) by extensions ['ros']
+[0.235s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker10/materials) by extension 'ros'
+[0.235s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker10/materials) by extensions ['cmake', 'python']
+[0.235s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker10/materials) by extension 'cmake'
+[0.235s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker10/materials) by extension 'python'
+[0.235s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker10/materials) by extensions ['python_setup_py']
+[0.235s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker10/materials) by extension 'python_setup_py'
+[0.235s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker10/materials/textures) by extensions ['ignore', 'ignore_ament_install']
+[0.235s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker10/materials/textures) by extension 'ignore'
+[0.235s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker10/materials/textures) by extension 'ignore_ament_install'
+[0.235s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker10/materials/textures) by extensions ['colcon_pkg']
+[0.236s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker10/materials/textures) by extension 'colcon_pkg'
+[0.236s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker10/materials/textures) by extensions ['colcon_meta']
+[0.236s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker10/materials/textures) by extension 'colcon_meta'
+[0.236s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker10/materials/textures) by extensions ['ros']
+[0.236s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker10/materials/textures) by extension 'ros'
+[0.236s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker10/materials/textures) by extensions ['cmake', 'python']
+[0.236s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker10/materials/textures) by extension 'cmake'
+[0.236s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker10/materials/textures) by extension 'python'
+[0.236s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker10/materials/textures) by extensions ['python_setup_py']
+[0.236s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker10/materials/textures) by extension 'python_setup_py'
+[0.236s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker10/meshes) by extensions ['ignore', 'ignore_ament_install']
+[0.236s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker10/meshes) by extension 'ignore'
+[0.236s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker10/meshes) by extension 'ignore_ament_install'
+[0.236s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker10/meshes) by extensions ['colcon_pkg']
+[0.236s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker10/meshes) by extension 'colcon_pkg'
+[0.236s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker10/meshes) by extensions ['colcon_meta']
+[0.236s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker10/meshes) by extension 'colcon_meta'
+[0.236s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker10/meshes) by extensions ['ros']
+[0.236s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker10/meshes) by extension 'ros'
+[0.236s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker10/meshes) by extensions ['cmake', 'python']
+[0.236s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker10/meshes) by extension 'cmake'
+[0.236s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker10/meshes) by extension 'python'
+[0.236s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker10/meshes) by extensions ['python_setup_py']
+[0.236s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker10/meshes) by extension 'python_setup_py'
+[0.236s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker2) by extensions ['ignore', 'ignore_ament_install']
+[0.236s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker2) by extension 'ignore'
+[0.236s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker2) by extension 'ignore_ament_install'
+[0.236s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker2) by extensions ['colcon_pkg']
+[0.236s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker2) by extension 'colcon_pkg'
+[0.236s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker2) by extensions ['colcon_meta']
+[0.236s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker2) by extension 'colcon_meta'
+[0.236s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker2) by extensions ['ros']
+[0.236s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker2) by extension 'ros'
+[0.236s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker2) by extensions ['cmake', 'python']
+[0.236s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker2) by extension 'cmake'
+[0.236s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker2) by extension 'python'
+[0.236s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker2) by extensions ['python_setup_py']
+[0.237s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker2) by extension 'python_setup_py'
+[0.237s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker2/materials) by extensions ['ignore', 'ignore_ament_install']
+[0.237s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker2/materials) by extension 'ignore'
+[0.237s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker2/materials) by extension 'ignore_ament_install'
+[0.237s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker2/materials) by extensions ['colcon_pkg']
+[0.237s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker2/materials) by extension 'colcon_pkg'
+[0.237s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker2/materials) by extensions ['colcon_meta']
+[0.237s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker2/materials) by extension 'colcon_meta'
+[0.237s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker2/materials) by extensions ['ros']
+[0.237s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker2/materials) by extension 'ros'
+[0.237s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker2/materials) by extensions ['cmake', 'python']
+[0.237s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker2/materials) by extension 'cmake'
+[0.237s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker2/materials) by extension 'python'
+[0.237s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker2/materials) by extensions ['python_setup_py']
+[0.237s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker2/materials) by extension 'python_setup_py'
+[0.237s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker2/materials/textures) by extensions ['ignore', 'ignore_ament_install']
+[0.237s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker2/materials/textures) by extension 'ignore'
+[0.237s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker2/materials/textures) by extension 'ignore_ament_install'
+[0.237s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker2/materials/textures) by extensions ['colcon_pkg']
+[0.237s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker2/materials/textures) by extension 'colcon_pkg'
+[0.237s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker2/materials/textures) by extensions ['colcon_meta']
+[0.237s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker2/materials/textures) by extension 'colcon_meta'
+[0.237s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker2/materials/textures) by extensions ['ros']
+[0.237s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker2/materials/textures) by extension 'ros'
+[0.237s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker2/materials/textures) by extensions ['cmake', 'python']
+[0.237s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker2/materials/textures) by extension 'cmake'
+[0.237s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker2/materials/textures) by extension 'python'
+[0.237s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker2/materials/textures) by extensions ['python_setup_py']
+[0.237s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker2/materials/textures) by extension 'python_setup_py'
+[0.237s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker2/meshes) by extensions ['ignore', 'ignore_ament_install']
+[0.237s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker2/meshes) by extension 'ignore'
+[0.237s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker2/meshes) by extension 'ignore_ament_install'
+[0.237s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker2/meshes) by extensions ['colcon_pkg']
+[0.237s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker2/meshes) by extension 'colcon_pkg'
+[0.237s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker2/meshes) by extensions ['colcon_meta']
+[0.238s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker2/meshes) by extension 'colcon_meta'
+[0.238s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker2/meshes) by extensions ['ros']
+[0.238s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker2/meshes) by extension 'ros'
+[0.238s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker2/meshes) by extensions ['cmake', 'python']
+[0.238s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker2/meshes) by extension 'cmake'
+[0.238s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker2/meshes) by extension 'python'
+[0.238s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker2/meshes) by extensions ['python_setup_py']
+[0.238s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker2/meshes) by extension 'python_setup_py'
+[0.238s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker3) by extensions ['ignore', 'ignore_ament_install']
+[0.238s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker3) by extension 'ignore'
+[0.238s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker3) by extension 'ignore_ament_install'
+[0.238s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker3) by extensions ['colcon_pkg']
+[0.238s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker3) by extension 'colcon_pkg'
+[0.238s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker3) by extensions ['colcon_meta']
+[0.238s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker3) by extension 'colcon_meta'
+[0.238s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker3) by extensions ['ros']
+[0.238s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker3) by extension 'ros'
+[0.238s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker3) by extensions ['cmake', 'python']
+[0.238s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker3) by extension 'cmake'
+[0.238s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker3) by extension 'python'
+[0.238s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker3) by extensions ['python_setup_py']
+[0.238s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker3) by extension 'python_setup_py'
+[0.238s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker3/materials) by extensions ['ignore', 'ignore_ament_install']
+[0.238s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker3/materials) by extension 'ignore'
+[0.238s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker3/materials) by extension 'ignore_ament_install'
+[0.238s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker3/materials) by extensions ['colcon_pkg']
+[0.238s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker3/materials) by extension 'colcon_pkg'
+[0.238s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker3/materials) by extensions ['colcon_meta']
+[0.238s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker3/materials) by extension 'colcon_meta'
+[0.238s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker3/materials) by extensions ['ros']
+[0.238s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker3/materials) by extension 'ros'
+[0.238s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker3/materials) by extensions ['cmake', 'python']
+[0.238s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker3/materials) by extension 'cmake'
+[0.238s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker3/materials) by extension 'python'
+[0.238s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker3/materials) by extensions ['python_setup_py']
+[0.238s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker3/materials) by extension 'python_setup_py'
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker3/materials/textures) by extensions ['ignore', 'ignore_ament_install']
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker3/materials/textures) by extension 'ignore'
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker3/materials/textures) by extension 'ignore_ament_install'
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker3/materials/textures) by extensions ['colcon_pkg']
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker3/materials/textures) by extension 'colcon_pkg'
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker3/materials/textures) by extensions ['colcon_meta']
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker3/materials/textures) by extension 'colcon_meta'
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker3/materials/textures) by extensions ['ros']
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker3/materials/textures) by extension 'ros'
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker3/materials/textures) by extensions ['cmake', 'python']
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker3/materials/textures) by extension 'cmake'
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker3/materials/textures) by extension 'python'
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker3/materials/textures) by extensions ['python_setup_py']
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker3/materials/textures) by extension 'python_setup_py'
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker3/meshes) by extensions ['ignore', 'ignore_ament_install']
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker3/meshes) by extension 'ignore'
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker3/meshes) by extension 'ignore_ament_install'
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker3/meshes) by extensions ['colcon_pkg']
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker3/meshes) by extension 'colcon_pkg'
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker3/meshes) by extensions ['colcon_meta']
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker3/meshes) by extension 'colcon_meta'
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker3/meshes) by extensions ['ros']
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker3/meshes) by extension 'ros'
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker3/meshes) by extensions ['cmake', 'python']
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker3/meshes) by extension 'cmake'
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker3/meshes) by extension 'python'
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker3/meshes) by extensions ['python_setup_py']
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(world/models/marker3/meshes) by extension 'python_setup_py'
+[0.239s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.239s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.239s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.239s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.239s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.257s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[0.257s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[0.258s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 2 installed packages in /home/pavlo/v10/g06_prii3_wsv2/install
+[0.258s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1 installed packages in /home/pavlo/g06_prii3_ws/install
+[0.259s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 372 installed packages in /opt/ros/foxy
+[0.261s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[0.303s] Level 5:colcon.colcon_core.verb:set package 'aruco_detector_pkg' build argument 'cmake_args' from command line to 'None'
+[0.303s] Level 5:colcon.colcon_core.verb:set package 'aruco_detector_pkg' build argument 'cmake_target' from command line to 'None'
+[0.303s] Level 5:colcon.colcon_core.verb:set package 'aruco_detector_pkg' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.303s] Level 5:colcon.colcon_core.verb:set package 'aruco_detector_pkg' build argument 'cmake_clean_cache' from command line to 'False'
+[0.303s] Level 5:colcon.colcon_core.verb:set package 'aruco_detector_pkg' build argument 'cmake_clean_first' from command line to 'False'
+[0.303s] Level 5:colcon.colcon_core.verb:set package 'aruco_detector_pkg' build argument 'cmake_force_configure' from command line to 'False'
+[0.303s] Level 5:colcon.colcon_core.verb:set package 'aruco_detector_pkg' build argument 'ament_cmake_args' from command line to 'None'
+[0.303s] Level 5:colcon.colcon_core.verb:set package 'aruco_detector_pkg' build argument 'catkin_cmake_args' from command line to 'None'
+[0.303s] Level 5:colcon.colcon_core.verb:set package 'aruco_detector_pkg' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.303s] DEBUG:colcon.colcon_core.verb:Building package 'aruco_detector_pkg' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/pavlo/v10/g06_prii3_wsv2/build/aruco_detector_pkg', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/pavlo/v10/g06_prii3_wsv2/install/aruco_detector_pkg', 'merge_install': False, 'path': '/home/pavlo/v10/g06_prii3_wsv2/src/aruco_detector_pkg', 'symlink_install': False, 'test_result_base': None}
+[0.303s] Level 5:colcon.colcon_core.verb:set package 'eurobot_cositas' build argument 'cmake_args' from command line to 'None'
+[0.303s] Level 5:colcon.colcon_core.verb:set package 'eurobot_cositas' build argument 'cmake_target' from command line to 'None'
+[0.303s] Level 5:colcon.colcon_core.verb:set package 'eurobot_cositas' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.303s] Level 5:colcon.colcon_core.verb:set package 'eurobot_cositas' build argument 'cmake_clean_cache' from command line to 'False'
+[0.303s] Level 5:colcon.colcon_core.verb:set package 'eurobot_cositas' build argument 'cmake_clean_first' from command line to 'False'
+[0.303s] Level 5:colcon.colcon_core.verb:set package 'eurobot_cositas' build argument 'cmake_force_configure' from command line to 'False'
+[0.303s] Level 5:colcon.colcon_core.verb:set package 'eurobot_cositas' build argument 'ament_cmake_args' from command line to 'None'
+[0.303s] Level 5:colcon.colcon_core.verb:set package 'eurobot_cositas' build argument 'catkin_cmake_args' from command line to 'None'
+[0.303s] Level 5:colcon.colcon_core.verb:set package 'eurobot_cositas' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.303s] DEBUG:colcon.colcon_core.verb:Building package 'eurobot_cositas' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/pavlo/v10/g06_prii3_wsv2/build/eurobot_cositas', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/pavlo/v10/g06_prii3_wsv2/install/eurobot_cositas', 'merge_install': False, 'path': '/home/pavlo/v10/g06_prii3_wsv2/src/eurobot_cositas', 'symlink_install': False, 'test_result_base': None}
+[0.303s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.304s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.304s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/pavlo/v10/g06_prii3_wsv2/src/aruco_detector_pkg' with build type 'ament_python'
+[0.304s] Level 1:colcon.colcon_core.shell:create_environment_hook('aruco_detector_pkg', 'ament_prefix_path')
+[0.305s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.306s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/pavlo/v10/g06_prii3_wsv2/install/aruco_detector_pkg/share/aruco_detector_pkg/hook/ament_prefix_path.ps1'
+[0.306s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/pavlo/v10/g06_prii3_wsv2/install/aruco_detector_pkg/share/aruco_detector_pkg/hook/ament_prefix_path.dsv'
+[0.306s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/pavlo/v10/g06_prii3_wsv2/install/aruco_detector_pkg/share/aruco_detector_pkg/hook/ament_prefix_path.sh'
+[0.307s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.307s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.310s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/pavlo/v10/g06_prii3_wsv2/src/eurobot_cositas' with build type 'ament_python'
+[0.311s] Level 1:colcon.colcon_core.shell:create_environment_hook('eurobot_cositas', 'ament_prefix_path')
+[0.311s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/pavlo/v10/g06_prii3_wsv2/install/eurobot_cositas/share/eurobot_cositas/hook/ament_prefix_path.ps1'
+[0.311s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/pavlo/v10/g06_prii3_wsv2/install/eurobot_cositas/share/eurobot_cositas/hook/ament_prefix_path.dsv'
+[0.312s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/pavlo/v10/g06_prii3_wsv2/install/eurobot_cositas/share/eurobot_cositas/hook/ament_prefix_path.sh'
+[0.312s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.312s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.458s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/pavlo/v10/g06_prii3_wsv2/src/aruco_detector_pkg'
+[0.458s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.458s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.595s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/pavlo/v10/g06_prii3_wsv2/src/eurobot_cositas'
+[0.596s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.596s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.847s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/pavlo/v10/g06_prii3_wsv2/src/eurobot_cositas': PYTHONPATH=/home/pavlo/v10/g06_prii3_wsv2/build/eurobot_cositas/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/pavlo/v10/g06_prii3_wsv2/install/eurobot_cositas/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/eurobot_cositas build --build-base /home/pavlo/v10/g06_prii3_wsv2/build/eurobot_cositas/build install --record /home/pavlo/v10/g06_prii3_wsv2/build/eurobot_cositas/install.log --install-scripts $base/lib/eurobot_cositas --single-version-externally-managed install_data
+[0.849s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/pavlo/v10/g06_prii3_wsv2/src/aruco_detector_pkg': PYTHONPATH=/home/pavlo/v10/g06_prii3_wsv2/build/aruco_detector_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/pavlo/v10/g06_prii3_wsv2/install/aruco_detector_pkg/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/aruco_detector_pkg build --build-base /home/pavlo/v10/g06_prii3_wsv2/build/aruco_detector_pkg/build install --record /home/pavlo/v10/g06_prii3_wsv2/build/aruco_detector_pkg/install.log --install-scripts $base/lib/aruco_detector_pkg --single-version-externally-managed install_data
+[1.031s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/pavlo/v10/g06_prii3_wsv2/src/eurobot_cositas' returned '0': PYTHONPATH=/home/pavlo/v10/g06_prii3_wsv2/build/eurobot_cositas/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/pavlo/v10/g06_prii3_wsv2/install/eurobot_cositas/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/eurobot_cositas build --build-base /home/pavlo/v10/g06_prii3_wsv2/build/eurobot_cositas/build install --record /home/pavlo/v10/g06_prii3_wsv2/build/eurobot_cositas/install.log --install-scripts $base/lib/eurobot_cositas --single-version-externally-managed install_data
+[1.033s] Level 1:colcon.colcon_core.environment:checking '/home/pavlo/v10/g06_prii3_wsv2/install/eurobot_cositas' for CMake module files
+[1.033s] Level 1:colcon.colcon_core.environment:checking '/home/pavlo/v10/g06_prii3_wsv2/install/eurobot_cositas' for CMake config files
+[1.034s] Level 1:colcon.colcon_core.environment:checking '/home/pavlo/v10/g06_prii3_wsv2/install/eurobot_cositas/lib'
+[1.034s] Level 1:colcon.colcon_core.environment:checking '/home/pavlo/v10/g06_prii3_wsv2/install/eurobot_cositas/bin'
+[1.034s] Level 1:colcon.colcon_core.environment:checking '/home/pavlo/v10/g06_prii3_wsv2/install/eurobot_cositas/lib/pkgconfig/eurobot_cositas.pc'
+[1.035s] Level 1:colcon.colcon_core.environment:checking '/home/pavlo/v10/g06_prii3_wsv2/install/eurobot_cositas/lib/python3.8/site-packages'
+[1.035s] Level 1:colcon.colcon_core.shell:create_environment_hook('eurobot_cositas', 'pythonpath')
+[1.035s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/pavlo/v10/g06_prii3_wsv2/install/eurobot_cositas/share/eurobot_cositas/hook/pythonpath.ps1'
+[1.035s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/pavlo/v10/g06_prii3_wsv2/install/eurobot_cositas/share/eurobot_cositas/hook/pythonpath.dsv'
+[1.036s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/pavlo/v10/g06_prii3_wsv2/install/eurobot_cositas/share/eurobot_cositas/hook/pythonpath.sh'
+[1.036s] Level 1:colcon.colcon_core.environment:checking '/home/pavlo/v10/g06_prii3_wsv2/install/eurobot_cositas/bin'
+[1.036s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(eurobot_cositas)
+[1.036s] INFO:colcon.colcon_core.shell:Creating package script '/home/pavlo/v10/g06_prii3_wsv2/install/eurobot_cositas/share/eurobot_cositas/package.ps1'
+[1.037s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/pavlo/v10/g06_prii3_wsv2/install/eurobot_cositas/share/eurobot_cositas/package.dsv'
+[1.037s] INFO:colcon.colcon_core.shell:Creating package script '/home/pavlo/v10/g06_prii3_wsv2/install/eurobot_cositas/share/eurobot_cositas/package.sh'
+[1.038s] INFO:colcon.colcon_core.shell:Creating package script '/home/pavlo/v10/g06_prii3_wsv2/install/eurobot_cositas/share/eurobot_cositas/package.bash'
+[1.038s] INFO:colcon.colcon_core.shell:Creating package script '/home/pavlo/v10/g06_prii3_wsv2/install/eurobot_cositas/share/eurobot_cositas/package.zsh'
+[1.039s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/pavlo/v10/g06_prii3_wsv2/install/eurobot_cositas/share/colcon-core/packages/eurobot_cositas)
+[1.039s] Level 1:colcon.colcon_core.environment:checking '/home/pavlo/v10/g06_prii3_wsv2/install/aruco_detector_pkg' for CMake module files
+[1.040s] Level 1:colcon.colcon_core.environment:checking '/home/pavlo/v10/g06_prii3_wsv2/install/aruco_detector_pkg' for CMake config files
+[1.040s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/pavlo/v10/g06_prii3_wsv2/src/aruco_detector_pkg' returned '0': PYTHONPATH=/home/pavlo/v10/g06_prii3_wsv2/build/aruco_detector_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/pavlo/v10/g06_prii3_wsv2/install/aruco_detector_pkg/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/aruco_detector_pkg build --build-base /home/pavlo/v10/g06_prii3_wsv2/build/aruco_detector_pkg/build install --record /home/pavlo/v10/g06_prii3_wsv2/build/aruco_detector_pkg/install.log --install-scripts $base/lib/aruco_detector_pkg --single-version-externally-managed install_data
+[1.040s] Level 1:colcon.colcon_core.environment:checking '/home/pavlo/v10/g06_prii3_wsv2/install/aruco_detector_pkg/lib'
+[1.040s] Level 1:colcon.colcon_core.environment:checking '/home/pavlo/v10/g06_prii3_wsv2/install/aruco_detector_pkg/bin'
+[1.040s] Level 1:colcon.colcon_core.environment:checking '/home/pavlo/v10/g06_prii3_wsv2/install/aruco_detector_pkg/lib/pkgconfig/aruco_detector_pkg.pc'
+[1.041s] Level 1:colcon.colcon_core.environment:checking '/home/pavlo/v10/g06_prii3_wsv2/install/aruco_detector_pkg/lib/python3.8/site-packages'
+[1.041s] Level 1:colcon.colcon_core.shell:create_environment_hook('aruco_detector_pkg', 'pythonpath')
+[1.041s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/pavlo/v10/g06_prii3_wsv2/install/aruco_detector_pkg/share/aruco_detector_pkg/hook/pythonpath.ps1'
+[1.041s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/pavlo/v10/g06_prii3_wsv2/install/aruco_detector_pkg/share/aruco_detector_pkg/hook/pythonpath.dsv'
+[1.041s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/pavlo/v10/g06_prii3_wsv2/install/aruco_detector_pkg/share/aruco_detector_pkg/hook/pythonpath.sh'
+[1.042s] Level 1:colcon.colcon_core.environment:checking '/home/pavlo/v10/g06_prii3_wsv2/install/aruco_detector_pkg/bin'
+[1.042s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(aruco_detector_pkg)
+[1.042s] INFO:colcon.colcon_core.shell:Creating package script '/home/pavlo/v10/g06_prii3_wsv2/install/aruco_detector_pkg/share/aruco_detector_pkg/package.ps1'
+[1.042s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/pavlo/v10/g06_prii3_wsv2/install/aruco_detector_pkg/share/aruco_detector_pkg/package.dsv'
+[1.043s] INFO:colcon.colcon_core.shell:Creating package script '/home/pavlo/v10/g06_prii3_wsv2/install/aruco_detector_pkg/share/aruco_detector_pkg/package.sh'
+[1.043s] INFO:colcon.colcon_core.shell:Creating package script '/home/pavlo/v10/g06_prii3_wsv2/install/aruco_detector_pkg/share/aruco_detector_pkg/package.bash'
+[1.043s] INFO:colcon.colcon_core.shell:Creating package script '/home/pavlo/v10/g06_prii3_wsv2/install/aruco_detector_pkg/share/aruco_detector_pkg/package.zsh'
+[1.043s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/pavlo/v10/g06_prii3_wsv2/install/aruco_detector_pkg/share/colcon-core/packages/aruco_detector_pkg)
+[1.044s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[1.044s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[1.044s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[1.044s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[1.047s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[1.047s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[1.047s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[1.057s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[1.057s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/pavlo/v10/g06_prii3_wsv2/install/local_setup.ps1'
+[1.058s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/pavlo/v10/g06_prii3_wsv2/install/_local_setup_util_ps1.py'
+[1.058s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/pavlo/v10/g06_prii3_wsv2/install/setup.ps1'
+[1.059s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/pavlo/v10/g06_prii3_wsv2/install/local_setup.sh'
+[1.060s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/pavlo/v10/g06_prii3_wsv2/install/_local_setup_util_sh.py'
+[1.060s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/pavlo/v10/g06_prii3_wsv2/install/setup.sh'
+[1.061s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/pavlo/v10/g06_prii3_wsv2/install/local_setup.bash'
+[1.062s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/pavlo/v10/g06_prii3_wsv2/install/setup.bash'
+[1.063s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/pavlo/v10/g06_prii3_wsv2/install/local_setup.zsh'
+[1.064s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/pavlo/v10/g06_prii3_wsv2/install/setup.zsh'
