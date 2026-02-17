@@ -1,0 +1,63 @@
+[0.663s] Invoking command in '/home/wormi/sprint5/camara/ASDASDA/g06_prii3_wsv2/src/eurobot_cositas': PYTHONPATH=/home/wormi/sprint5/camara/ASDASDA/g06_prii3_wsv2/src/eurobot_cositas/build/eurobot_cositas/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/wormi/sprint5/camara/ASDASDA/g06_prii3_wsv2/src/eurobot_cositas/install/eurobot_cositas/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base build/eurobot_cositas build --build-base /home/wormi/sprint5/camara/ASDASDA/g06_prii3_wsv2/src/eurobot_cositas/build/eurobot_cositas/build install --record /home/wormi/sprint5/camara/ASDASDA/g06_prii3_wsv2/src/eurobot_cositas/build/eurobot_cositas/install.log --install-scripts $base/lib/eurobot_cositas --single-version-externally-managed install_data
+[0.873s] running egg_info
+[0.874s] creating build/eurobot_cositas/eurobot_cositas.egg-info
+[0.874s] writing build/eurobot_cositas/eurobot_cositas.egg-info/PKG-INFO
+[0.874s] writing dependency_links to build/eurobot_cositas/eurobot_cositas.egg-info/dependency_links.txt
+[0.874s] writing entry points to build/eurobot_cositas/eurobot_cositas.egg-info/entry_points.txt
+[0.874s] writing requirements to build/eurobot_cositas/eurobot_cositas.egg-info/requires.txt
+[0.874s] writing top-level names to build/eurobot_cositas/eurobot_cositas.egg-info/top_level.txt
+[0.875s] writing manifest file 'build/eurobot_cositas/eurobot_cositas.egg-info/SOURCES.txt'
+[0.904s] reading manifest file 'build/eurobot_cositas/eurobot_cositas.egg-info/SOURCES.txt'
+[0.905s] writing manifest file 'build/eurobot_cositas/eurobot_cositas.egg-info/SOURCES.txt'
+[0.905s] running build
+[0.905s] running build_py
+[0.906s] creating /home/wormi/sprint5/camara/ASDASDA/g06_prii3_wsv2/src/eurobot_cositas/build/eurobot_cositas/build
+[0.906s] creating /home/wormi/sprint5/camara/ASDASDA/g06_prii3_wsv2/src/eurobot_cositas/build/eurobot_cositas/build/lib
+[0.906s] creating /home/wormi/sprint5/camara/ASDASDA/g06_prii3_wsv2/src/eurobot_cositas/build/eurobot_cositas/build/lib/eurobot_cositas
+[0.906s] copying eurobot_cositas/vision_navigation.py -> /home/wormi/sprint5/camara/ASDASDA/g06_prii3_wsv2/src/eurobot_cositas/build/eurobot_cositas/build/lib/eurobot_cositas
+[0.906s] copying eurobot_cositas/aruco_detector_cositas.py -> /home/wormi/sprint5/camara/ASDASDA/g06_prii3_wsv2/src/eurobot_cositas/build/eurobot_cositas/build/lib/eurobot_cositas
+[0.906s] copying eurobot_cositas/aruco_detector_no_storage.py -> /home/wormi/sprint5/camara/ASDASDA/g06_prii3_wsv2/src/eurobot_cositas/build/eurobot_cositas/build/lib/eurobot_cositas
+[0.906s] copying eurobot_cositas/diagnostico.py -> /home/wormi/sprint5/camara/ASDASDA/g06_prii3_wsv2/src/eurobot_cositas/build/eurobot_cositas/build/lib/eurobot_cositas
+[0.906s] copying eurobot_cositas/subcriptor.py -> /home/wormi/sprint5/camara/ASDASDA/g06_prii3_wsv2/src/eurobot_cositas/build/eurobot_cositas/build/lib/eurobot_cositas
+[0.906s] copying eurobot_cositas/__init__.py -> /home/wormi/sprint5/camara/ASDASDA/g06_prii3_wsv2/src/eurobot_cositas/build/eurobot_cositas/build/lib/eurobot_cositas
+[0.906s] running install
+[0.906s] running install_lib
+[0.907s] creating /home/wormi/sprint5/camara/ASDASDA/g06_prii3_wsv2/src/eurobot_cositas/install/eurobot_cositas/lib/python3.8/site-packages/eurobot_cositas
+[0.907s] copying /home/wormi/sprint5/camara/ASDASDA/g06_prii3_wsv2/src/eurobot_cositas/build/eurobot_cositas/build/lib/eurobot_cositas/vision_navigation.py -> /home/wormi/sprint5/camara/ASDASDA/g06_prii3_wsv2/src/eurobot_cositas/install/eurobot_cositas/lib/python3.8/site-packages/eurobot_cositas
+[0.907s] copying /home/wormi/sprint5/camara/ASDASDA/g06_prii3_wsv2/src/eurobot_cositas/build/eurobot_cositas/build/lib/eurobot_cositas/aruco_detector_cositas.py -> /home/wormi/sprint5/camara/ASDASDA/g06_prii3_wsv2/src/eurobot_cositas/install/eurobot_cositas/lib/python3.8/site-packages/eurobot_cositas
+[0.908s] copying /home/wormi/sprint5/camara/ASDASDA/g06_prii3_wsv2/src/eurobot_cositas/build/eurobot_cositas/build/lib/eurobot_cositas/aruco_detector_no_storage.py -> /home/wormi/sprint5/camara/ASDASDA/g06_prii3_wsv2/src/eurobot_cositas/install/eurobot_cositas/lib/python3.8/site-packages/eurobot_cositas
+[0.908s] copying /home/wormi/sprint5/camara/ASDASDA/g06_prii3_wsv2/src/eurobot_cositas/build/eurobot_cositas/build/lib/eurobot_cositas/diagnostico.py -> /home/wormi/sprint5/camara/ASDASDA/g06_prii3_wsv2/src/eurobot_cositas/install/eurobot_cositas/lib/python3.8/site-packages/eurobot_cositas
+[0.908s] copying /home/wormi/sprint5/camara/ASDASDA/g06_prii3_wsv2/src/eurobot_cositas/build/eurobot_cositas/build/lib/eurobot_cositas/subcriptor.py -> /home/wormi/sprint5/camara/ASDASDA/g06_prii3_wsv2/src/eurobot_cositas/install/eurobot_cositas/lib/python3.8/site-packages/eurobot_cositas
+[0.908s] copying /home/wormi/sprint5/camara/ASDASDA/g06_prii3_wsv2/src/eurobot_cositas/build/eurobot_cositas/build/lib/eurobot_cositas/__init__.py -> /home/wormi/sprint5/camara/ASDASDA/g06_prii3_wsv2/src/eurobot_cositas/install/eurobot_cositas/lib/python3.8/site-packages/eurobot_cositas
+[0.908s] byte-compiling /home/wormi/sprint5/camara/ASDASDA/g06_prii3_wsv2/src/eurobot_cositas/install/eurobot_cositas/lib/python3.8/site-packages/eurobot_cositas/vision_navigation.py to vision_navigation.cpython-38.pyc
+[0.910s] byte-compiling /home/wormi/sprint5/camara/ASDASDA/g06_prii3_wsv2/src/eurobot_cositas/install/eurobot_cositas/lib/python3.8/site-packages/eurobot_cositas/aruco_detector_cositas.py to aruco_detector_cositas.cpython-38.pyc
+[0.913s] byte-compiling /home/wormi/sprint5/camara/ASDASDA/g06_prii3_wsv2/src/eurobot_cositas/install/eurobot_cositas/lib/python3.8/site-packages/eurobot_cositas/aruco_detector_no_storage.py to aruco_detector_no_storage.cpython-38.pyc
+[0.914s] byte-compiling /home/wormi/sprint5/camara/ASDASDA/g06_prii3_wsv2/src/eurobot_cositas/install/eurobot_cositas/lib/python3.8/site-packages/eurobot_cositas/diagnostico.py to diagnostico.cpython-38.pyc
+[0.915s] byte-compiling /home/wormi/sprint5/camara/ASDASDA/g06_prii3_wsv2/src/eurobot_cositas/install/eurobot_cositas/lib/python3.8/site-packages/eurobot_cositas/subcriptor.py to subcriptor.cpython-38.pyc
+[0.916s] byte-compiling /home/wormi/sprint5/camara/ASDASDA/g06_prii3_wsv2/src/eurobot_cositas/install/eurobot_cositas/lib/python3.8/site-packages/eurobot_cositas/__init__.py to __init__.cpython-38.pyc
+[0.916s] running install_data
+[0.917s] creating /home/wormi/sprint5/camara/ASDASDA/g06_prii3_wsv2/src/eurobot_cositas/install/eurobot_cositas/share/ament_index
+[0.917s] creating /home/wormi/sprint5/camara/ASDASDA/g06_prii3_wsv2/src/eurobot_cositas/install/eurobot_cositas/share/ament_index/resource_index
+[0.917s] creating /home/wormi/sprint5/camara/ASDASDA/g06_prii3_wsv2/src/eurobot_cositas/install/eurobot_cositas/share/ament_index/resource_index/packages
+[0.917s] copying resource/eurobot_cositas -> /home/wormi/sprint5/camara/ASDASDA/g06_prii3_wsv2/src/eurobot_cositas/install/eurobot_cositas/share/ament_index/resource_index/packages
+[0.917s] copying package.xml -> /home/wormi/sprint5/camara/ASDASDA/g06_prii3_wsv2/src/eurobot_cositas/install/eurobot_cositas/share/eurobot_cositas
+[0.917s] creating /home/wormi/sprint5/camara/ASDASDA/g06_prii3_wsv2/src/eurobot_cositas/install/eurobot_cositas/share/eurobot_cositas/launch
+[0.917s] copying launch/subcriptor_launch.py -> /home/wormi/sprint5/camara/ASDASDA/g06_prii3_wsv2/src/eurobot_cositas/install/eurobot_cositas/share/eurobot_cositas/launch
+[0.917s] copying launch/static_overhead_camera.launch.py -> /home/wormi/sprint5/camara/ASDASDA/g06_prii3_wsv2/src/eurobot_cositas/install/eurobot_cositas/share/eurobot_cositas/launch
+[0.918s] copying launch/Move_eurobot_launch.py -> /home/wormi/sprint5/camara/ASDASDA/g06_prii3_wsv2/src/eurobot_cositas/install/eurobot_cositas/share/eurobot_cositas/launch
+[0.918s] copying launch/eurobot_world_launch.py -> /home/wormi/sprint5/camara/ASDASDA/g06_prii3_wsv2/src/eurobot_cositas/install/eurobot_cositas/share/eurobot_cositas/launch
+[0.918s] creating /home/wormi/sprint5/camara/ASDASDA/g06_prii3_wsv2/src/eurobot_cositas/install/eurobot_cositas/share/eurobot_cositas/world
+[0.918s] copying world/Tablero (copia).world -> /home/wormi/sprint5/camara/ASDASDA/g06_prii3_wsv2/src/eurobot_cositas/install/eurobot_cositas/share/eurobot_cositas/world
+[0.918s] copying world/Tablero2.world -> /home/wormi/sprint5/camara/ASDASDA/g06_prii3_wsv2/src/eurobot_cositas/install/eurobot_cositas/share/eurobot_cositas/world
+[0.918s] copying world/Tablero.world -> /home/wormi/sprint5/camara/ASDASDA/g06_prii3_wsv2/src/eurobot_cositas/install/eurobot_cositas/share/eurobot_cositas/world
+[0.918s] creating /home/wormi/sprint5/camara/ASDASDA/g06_prii3_wsv2/src/eurobot_cositas/install/eurobot_cositas/share/eurobot_cositas/config
+[0.918s] copying config/eurobot_view.rviz -> /home/wormi/sprint5/camara/ASDASDA/g06_prii3_wsv2/src/eurobot_cositas/install/eurobot_cositas/share/eurobot_cositas/config
+[0.918s] creating /home/wormi/sprint5/camara/ASDASDA/g06_prii3_wsv2/src/eurobot_cositas/install/eurobot_cositas/share/eurobot_cositas/templates
+[0.918s] copying templates/template.png -> /home/wormi/sprint5/camara/ASDASDA/g06_prii3_wsv2/src/eurobot_cositas/install/eurobot_cositas/share/eurobot_cositas/templates
+[0.918s] running install_egg_info
+[0.919s] Copying build/eurobot_cositas/eurobot_cositas.egg-info to /home/wormi/sprint5/camara/ASDASDA/g06_prii3_wsv2/src/eurobot_cositas/install/eurobot_cositas/lib/python3.8/site-packages/eurobot_cositas-0.0.0-py3.8.egg-info
+[0.919s] running install_scripts
+[0.936s] Installing aruco_detector_cositas script to /home/wormi/sprint5/camara/ASDASDA/g06_prii3_wsv2/src/eurobot_cositas/install/eurobot_cositas/lib/eurobot_cositas
+[0.936s] Installing vision_navigation script to /home/wormi/sprint5/camara/ASDASDA/g06_prii3_wsv2/src/eurobot_cositas/install/eurobot_cositas/lib/eurobot_cositas
+[0.936s] writing list of installed files to '/home/wormi/sprint5/camara/ASDASDA/g06_prii3_wsv2/src/eurobot_cositas/build/eurobot_cositas/install.log'
+[0.957s] Invoked command in '/home/wormi/sprint5/camara/ASDASDA/g06_prii3_wsv2/src/eurobot_cositas' returned '0': PYTHONPATH=/home/wormi/sprint5/camara/ASDASDA/g06_prii3_wsv2/src/eurobot_cositas/build/eurobot_cositas/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/wormi/sprint5/camara/ASDASDA/g06_prii3_wsv2/src/eurobot_cositas/install/eurobot_cositas/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base build/eurobot_cositas build --build-base /home/wormi/sprint5/camara/ASDASDA/g06_prii3_wsv2/src/eurobot_cositas/build/eurobot_cositas/build install --record /home/wormi/sprint5/camara/ASDASDA/g06_prii3_wsv2/src/eurobot_cositas/build/eurobot_cositas/install.log --install-scripts $base/lib/eurobot_cositas --single-version-externally-managed install_data
